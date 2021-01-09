@@ -1,0 +1,6 @@
+• User dapat konsultasi tanpa melakukan login.
+• Login :
+  Admin -> username & password : admin
+  Pakar -> username & password : pakar
+• Untuk proses register hanya bisa dilakukan oleh admin.
+•	
