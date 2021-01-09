@@ -97,6 +97,23 @@ class M_Staff extends CI_Model {
 		$query = $this->db->query("SELECT * FROM ruang");
 		return $query->result();
 	}
+
+	public function updatePemesanan($id){
+		$data = array(
+			'id_fakultas'=>$this->input->post('id_fakultas'),
+			'id_kursus'=>$this->input->post('kursus'),
+			'id_instruktur'=>$this->input->post('instruktur'),
+			'id_ruang'=>$this->input->post('ruang'),
+			'tanggal'=>$this->input->post('tanggal'),
+			'jam_awal'=>$this->input->post('jam_awal'),
+			'jam_akhir'=>$this->input->post('jam_akhir')
+		);
+		$data = $this->input->post();
+		$this->db->where('id_pemesanan',$id);
+		if($this->db->update("pemesanan",$data)){
+			return "Berhasil";
+		}
+	}
 	
 	function getdataID($where,$table){		
 		return $this->db->get_where($table,$where);
@@ -174,5 +191,15 @@ class M_Staff extends CI_Model {
     function hapus($where,$table){
 		$this->db->where($where);
 		$this->db->delete($table);
+	}
+
+	public function view_ruang(){ 
+		$query = $this->db->query("SELECT * FROM ruang");
+		return $query->result();
+	}
+
+	public function view_komputer(){ 
+		$query = $this->db->query("SELECT ruang.nama_ruang, kom.* FROM komputer as kom JOIN ruang as ruang ON kom.id_ruang = ruang.id_ruang");
+		return $query->result();
 	}
 }

@@ -7,11 +7,11 @@
           <div class="clearfix"></div>
         </div><br>
         <?php foreach($pemesanan as $key) {?>
-          <?=form_open_multipart('staff/prosesUbahpemesanan/'.$key->id_pemesanan)?>
+          <?=form_open_multipart('Staff/prosesUbahpemesanan/'.$key->id_pemesanan)?>
           <div class="form-group row">
             <label class="col-sm-3 col-form-label" >Fakultas</label>
             <div class="col-sm-8">
-              <select class='form-control' id='fakultas' name='fakultas' required>
+              <select class='form-control' id='fakultas' name='id_fakultas' required>
                 <option value="">-- Pilih Fakultas--</option>
                 <?php foreach ($fakultas as $a) {
                   echo '<option value="'.$a->id_fakultas.'" ';
@@ -25,7 +25,7 @@
           <div class="form-group row">
             <label class="col-sm-3 col-form-label" >Kursus</label>
             <div class="col-sm-8">
-              <select class='form-control' id='kursus' name='kursus' required>
+              <select class='form-control' id='kursus' name='id_kursus' required>
                 <option value="">-- Pilih Kursus--</option>
                 <?php foreach ($kursus as $a) {
                   echo '<option value="'.$a->id_kursus.'" ';
@@ -39,7 +39,7 @@
           <div class="form-group row">
             <label class="col-sm-3 col-form-label" >Instruktur</label>
             <div class="col-sm-8">
-              <select class='form-control' id='instruktur' name='instruktur' required>
+              <select class='form-control' id='instruktur' name='id_instruktur' required>
                 <option value="">-- Pilih Instruktur--</option>
                 <?php foreach ($instruktur as $a) {
                   echo '<option value="'.$a->id_instruktur.'" ';
@@ -53,7 +53,7 @@
          <div class="form-group row">
             <label class="col-sm-3 col-form-label" >Ruang</label>
             <div class="col-sm-8">
-              <select class='form-control' id='ruang' name='ruang' required>
+              <select class='form-control' id='ruang' name='id_ruang' required>
                 <option value="">-- Pilih Ruang--</option>
                 <?php foreach ($ruang as $a) {
                   echo '<option value="'.$a->id_ruang.'" ';
@@ -67,27 +67,24 @@
           <div class="form-group row">
             <label class="col-sm-3 col-form-label"> Tanggal </label>
             <div class="col-sm-8">
-              <input type="hidden" name="id_pemesanan" value="<?php echo $key->id_pemesanan ?>">
-              <input type="date" name="tanggal" class="form-control" value="<?php echo $key->tanggal ?>" format="Y/m/d H:i:s"></input>
+              <input type="date" name="tanggal" class="form-control" value="<?php echo $key->tanggal ?>" format="Y/m/d"></input>
             </div>
           </div>
           <div class="form-group row">
             <label class="col-sm-3 col-form-label"> Jam Awal </label>
             <div class="col-sm-8">
-              <input type="hidden" name="id_pemesanan" value="<?php echo $key->id_pemesanan ?>">
               <input type="time" name="jam_awal" class="form-control" value="<?php echo $key->jam_awal ?>" ></input>
             </div>
           </div>
           <div class="form-group row">
             <label class="col-sm-3 col-form-label"> Jam Akhir </label>
             <div class="col-sm-8">
-              <input type="hidden" name="id_pemesanan" value="<?php echo $key->id_pemesanan ?>">
               <input type="time" name="jam_akhir" class="form-control" value="<?php echo $key->jam_akhir ?>" ></input>
             </div>
           </div>
           <div class="page-header">
             <input type="submit" class="btn btn-success" value="EDIT">&nbsp;&nbsp;
-            <a href="<?php echo base_url()?>pemesanan"><button type="button" class="btn btn-danger">KEMBALI</button></a>
+            <a href="<?php echo base_url()?>Staff/DataPemesanan"><button type="button" class="btn btn-danger">KEMBALI</button></a>
           </div>
           <?php echo form_close(); ?>
         <?php } ?>
