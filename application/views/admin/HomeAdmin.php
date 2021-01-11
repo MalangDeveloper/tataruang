@@ -15,26 +15,26 @@
               <ul class="stats-overview">
                 <li>
                   <span class="name"> Total Penyakit </span>
-                  <span class="value text-success">
+                  <!-- <span class="value text-success">
                     <?php foreach($totalPenyakit as $tampilPenyakit) { ?>
                       <span><?php echo $tampilPenyakit->total ?></span> </a>
                     <?php } ?>
-                  </span>
+                  </span> -->
                 </li>
                 <li>
                   <span class="name"> Total Basis Kasus </span>
                   <span class="value text-success">
-                    <?php foreach($totalKasus as $tampilKasus) { ?>
+                    <!-- <?php foreach($totalKasus as $tampilKasus) { ?>
                       <span><?php echo $tampilKasus->total ?></span> </a>
-                    <?php } ?>
+                    <?php } ?> -->
                   </span>
                 </li>
                 <li class="hidden-phone">
                   <span class="name"> Total Data Pemeriksaan </span>
                   <span class="value text-success">
-                    <?php foreach($totalPemeriksaan as $tampilPemeriksaan) { ?>
+                    <!-- <?php foreach($totalPemeriksaan as $tampilPemeriksaan) { ?>
                       <span><?php echo $tampilPemeriksaan->total ?></span> </a>
-                    <?php } ?>
+                    <?php } ?> -->
                   </span>
                 </li>
               </ul><br/>
@@ -49,31 +49,6 @@
               <br><br>
               
               <div id="mainb" style="height:350px;"></div>
-              <div>
-                <h4><i class="fa fa-comments"></i> Kritik dan Saran</h4>
-                <!-- end of user messages -->
-                <?php 
-                foreach ($komen as $key) {
-                ?>
-                  <ul class="messages">
-                  <li>
-                    <img src="<?php echo base_url('Gambar/user.png') ?>" class="avatar" alt="Avatar">
-                    <div class="message_wrapper">
-                      <h4 class="heading">User <?php echo $key->id_komen ?></h4>
-                      <blockquote class="message"><?php echo $key->komen ?></blockquote><br/>
-                    </div>
-                  </li>
-                </ul>
-                <?php
-                }
-                ?>
-                        <!-- end of user messages -->
-
-
-                      </div>
-
-
-
                     </div>
 
                     <!-- start project-detail sidebar -->

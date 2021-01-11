@@ -23,6 +23,7 @@ class Users extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('M_Users');
+		$this->load->model('M_Staff');
 		$this->load->library(array('form_validation','session'));
 
 		if(!$this->session->userdata('level'))
@@ -34,6 +35,7 @@ class Users extends CI_Controller {
 
 	public function index()
 	{
+		$data['fakultas']=$this->M_Staff->ambilFakultas();
 		$data['user']=$this->M_Users->getDataUsers();
 		$data['page']='User.php';
 		$this->load->view('Admin/menu',$data);	

@@ -10,6 +10,10 @@ class M_Users extends CI_Model {
 		$this->db->from('users');
 		$this->db->order_by('id_users','DESC');
 		$query = $this->db->get();
+
+		$query = $this->db->query("SELECT users.*, fakultas.id_fakultas, fakultas.nama_fakultas FROM users INNER JOIN fakultas ON users.id_fakultas = fakultas.id_fakultas ORDER BY id_users DESC");
+
+		
 		return $query->result();
 	}
 
