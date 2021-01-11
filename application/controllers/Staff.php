@@ -33,6 +33,7 @@ class Staff extends CI_Controller {
 
 	public function editProfil(){
 		$data['user']= $this->M_Staff->getUserId();
+		$data['fakultas']=$this->M_Staff->ambilFakultas();
 		$data['page']='editProfile.php';
 		$this->load->view('Staff/menu',$data);
 	}
@@ -41,8 +42,7 @@ class Staff extends CI_Controller {
 	{
 		$data['email'] = set_value('email');
 	    $data['nama'] = set_value('nama');
-	    $data['alamat'] = set_value('alamat');
-	    $data['noWa'] = set_value('noWa');
+	    $data['level'] = set_value('level');
 	    $this->session->set_userdata($data);
 	    $this->M_Staff->updateProfile($data); //memasukan data ke database
 	    $this->session->set_flashdata('success','Profile Berhasil Diubah');
