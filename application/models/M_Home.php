@@ -14,21 +14,21 @@ class M_Home extends CI_Model {
 		return $query->result();
 	}
 
-	public function countPenyakit()
+	public function countLaboratorium()
 	{
-		$query = $this->db->query("SELECT COUNT(id_penyakit) AS total FROM penyakit");
+		$query = $this->db->query("SELECT COUNT(id_ruang) AS total FROM ruang");
 		return $query->result();
 	}
 
-	public function countKasus()
+	public function countFakultas()
 	{
-		$query = $this->db->query("SELECT COUNT(id_kasus) AS total FROM basis_kasus");
+		$query = $this->db->query("SELECT COUNT(id_fakultas) AS total FROM fakultas");
 		return $query->result();
 	}
-
-	public function countPemeriksaan()
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	public function countPemesanan()
 	{
-		$query = $this->db->query("SELECT COUNT(id_pemeriksaan) AS total FROM pemeriksaan");
+		$query = $this->db->query("SELECT COUNT(id_pemesanan) AS total FROM pemesanan");
 		return $query->result();
 	}
 

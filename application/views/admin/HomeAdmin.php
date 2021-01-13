@@ -14,27 +14,27 @@
             <div class="col-md-9 col-sm-9  ">
               <ul class="stats-overview">
                 <li>
-                  <span class="name"> Total Penyakit </span>
-                  <!-- <span class="value text-success">
-                    <?php foreach($totalPenyakit as $tampilPenyakit) { ?>
-                      <span><?php echo $tampilPenyakit->total ?></span> </a>
-                    <?php } ?>
-                  </span> -->
-                </li>
-                <li>
-                  <span class="name"> Total Basis Kasus </span>
+                  <span class="name"> Total Pemesanan </span>
                   <span class="value text-success">
-                    <!-- <?php foreach($totalKasus as $tampilKasus) { ?>
-                      <span><?php echo $tampilKasus->total ?></span> </a>
-                    <?php } ?> -->
+                    <?php foreach($totalPemesanan as $tampilPemesanan) { ?>
+                      <span><?php echo $tampilPemesanan->total ?></span> </a>
+                    <?php } ?>
                   </span>
                 </li>
                 <li class="hidden-phone">
-                  <span class="name"> Total Data Pemeriksaan </span>
-                  <span class="value text-success">
-                    <!-- <?php foreach($totalPemeriksaan as $tampilPemeriksaan) { ?>
-                      <span><?php echo $tampilPemeriksaan->total ?></span> </a>
-                    <?php } ?> -->
+                  <span class="name"> Total Laboratorium </span>
+                   <span class="value text-success">
+                    <?php foreach($totalLaboratorium as $tampilLaboratorium) { ?>
+                      <span><?php echo $tampilLaboratorium->total ?></span> </a>
+                    <?php } ?>
+                  </span>
+                </li>
+                <li>
+                  <span class="name"> Total Fakultas </span>
+                   <span class="value text-success">
+                    <?php foreach($totalFakultas as $tampilFakultas) { ?>
+                      <span><?php echo $tampilFakultas->total ?></span> </a>
+                    <?php } ?>
                   </span>
                 </li>
               </ul><br/>
