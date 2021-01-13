@@ -15,10 +15,9 @@ class Home extends CI_Controller {
 
 	public function index()
 	{
-		// $data['totalKasus'] = $this->M_Home->countKasus();
-		// $data['totalPenyakit'] = $this->M_Home->countPenyakit();
-		// $data['totalPemeriksaan'] = $this->M_Home->countPemeriksaan();
-		// $data['komen']=$this->M_Home->getDataKomen();
+		$data['totalFakultas'] = $this->M_Home->countFakultas();
+		$data['totalLaboratorium'] = $this->M_Home->countLaboratorium();
+		$data['totalPemesanan'] = $this->M_Home->countPemesanan();
 		$data['page']='homeAdmin.php';
 		$this->load->view('Admin/menu',$data);
 	}

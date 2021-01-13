@@ -3,7 +3,7 @@
     <div class=" col-xs-12">
       <div class="x_panel">
         <div class="x_title">
-          <h3>DATA USER</h3>
+          <h3>DATA FAKULTAS</h3>
           <div class="clearfix"></div>
         </div>
         <div class="pull-right"><a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal_add_new"><span class="glyphicon glyphicon-plus"></span> Add New</a></div><br><br>
@@ -38,33 +38,21 @@
             <tr class="bg-group">
               <th width="5px">NO</th>
               <th>Nama</th>
-              <th>Email</th>
-              <th>Password</th>
-              <th>Fakultas</th>
-              <th>Level</th>
-              <th>Created At</th>
-              <th>Updated At</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
             <?php 
               $i=1;
-              foreach ($user as $key) 
+              foreach ($Fakultas as $key) 
               {
             ?>
             <tr>
               <td><?php echo $i; ?></td>
-              <td><?php echo $key->nama;?></td>
-              <td><?php echo $key->email;?></td>
-              <td><?php echo $key->password;?></td>
-              <td><?php echo $key->nama_fakultas;?></td>
-              <td><?php echo $key->level;?></td>
-              <td><?php echo $key->created_at;?></td>
-              <td><?php echo $key->updated_at;?></td>
+              <td><?php echo $key->nama_fakultas;?></td>              
               <td>
-                <a href="<?= base_url() ?>Users/editProfil/<?= $key->id_users?>" class="btn btn-danger" onclick="return confirm('Apakah Anda Ingin Menghapus Data : <?=$key->nama;?> ?');"><span class="glyphicon glyphicon-trash"></span></a>
-                <a href="<?= base_url() ?>Users/editProfil/<?= $key->id_users?>" class="btn btn-success"><span class="glyphicon glyphicon-edit"></span></a>
+                <a href="<?= base_url() ?>Fakultas/hapusFakultas/<?= $key->id_fakultas?>" class="btn btn-danger" onclick="return confirm('Apakah Anda Ingin Menghapus Data : <?=$key->nama_fakultas;?> ?');"><span class="glyphicon glyphicon-trash"></span></a>
+                <a href="<?= base_url() ?>Fakultas/ubahFakultas/<?= $key->id_fakultas?>" class="btn btn-success"><span class="glyphicon glyphicon-edit"></span></a>
               </td>
             </tr>
             <?php
@@ -85,69 +73,17 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-        <h3 class="modal-title" id="myModalLabel">Tambah User</h3>
+        <h3 class="modal-title" id="myModalLabel">Tambah Fakultas</h3>
       </div>
-      <form class="form-horizontal" method="post" action="<?php echo base_url().'Users/simpanUser'?>">
+      <form class="form-horizontal" method="post" action="<?php echo base_url().'Fakultas/simpanFakultas'?>">
         <div class="modal-body">
           <div class="form-group">
             <label class="control-label col-xs-3" >Nama</label>
             <div class="col-xs-8">
-              <input name="nama" class="form-control" type="text" placeholder="Nama" required>
+              <input name="nama_fakultas" class="form-control" type="text" placeholder="Nama" required>
             </div>
           </div>
-        </div>
-        <div class="modal-body">
-          <div class="form-group">
-            <label class="control-label col-xs-3" >Email</label>
-            <div class="col-xs-8">
-              <input name="email" class="form-control" type="email" placeholder="Email" required>
-            </div>
-          </div>
-        </div>
-        <div class="modal-body">
-          <div class="form-group">
-            <label class="control-label col-xs-3" >Password</label>
-            <div class="col-xs-8">
-              <input name="password" class="form-control" type="password" placeholder="Password" required>
-            </div>
-          </div>
-        </div>
-        <div class="modal-body">
-          <div class="form-group">
-            <label class="control-label col-xs-3" >Fakultas</label>
-            <div class="col-sm-8">
-              <select class='form-control' id='fakultas' name='id_fakultas' required>
-                <option value="">-- Pilih Fakultas--</option>
-                <?php foreach ($fakultas as $a) {
-                  echo '<option value="'.$a->id_fakultas.'" ';
-                  if ($key->id_fakultas==$a->id_fakultas)
-                    echo "selected";
-                  echo '>'.$a->nama_fakultas.'</option>';
-                }?>
-              </select>
-            </div>
-          </div>
-        </div>
-        <div class="modal-body">
-          <div class="form-group">
-            <label class="control-label col-xs-3" >No. Telepon</label>
-            <div class="col-xs-8">
-              <input name="noWa" class="form-control" type="text" placeholder="No. Telepon" required>
-            </div>
-          </div>
-        </div>
-        <div class="modal-body">
-          <div class="form-group">
-            <label class="control-label col-xs-3" >Level</label>
-            <div class="col-xs-8">
-              <select class='form-control' id='exampleFormControlSelect2' name='level' required>
-                <option value="">-- Level User --</option>
-                <option value="Admin">Admin</option>
-                <option value="Pakar">Pakar</option>
-              </select>
-            </div>
-          </div>
-        </div>
+        </div>              
         <div class="modal-footer">
           <button class="btn" data-dismiss="modal" aria-hidden="true">Tutup</button>
           <button class="btn btn-info">Simpan</button>
