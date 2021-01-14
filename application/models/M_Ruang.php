@@ -69,4 +69,9 @@ class M_Ruang extends CI_Model {
 		// $query = $this->db->query("SELECT detail_pemeriksaan.*, gejala.id_gejala, gejala.nm_gejala FROM detail_pemeriksaan INNER JOIN gejala ON detail_pemeriksaan.fk_gejala = gejala.id_gejala WHERE MAX(detail_pemeriksaan.cetak)");
 		return $query->result();
 	}
+	public function ambilRuang()
+	{
+		$query = $this->db->query("SELECT * FROM ruang");
+		return $query->result();
+	}
 }

@@ -24,13 +24,41 @@
           <div class="form-group row">
             <label class="col-sm-3 col-form-label"> Nama Gedung </label>
             <div class="col-sm-8">
-            <input type="text" name="nama_gedung" class="form-control" placeholder="Nama Ruang" value="<?php echo $key->nama_gedung ?>" >
+            <input type="text" name="nama_gedung" class="form-control" placeholder="Nama Gedung" value="<?php echo $key->nama_gedung ?>" >
             </div>
           </div>
           <div class="form-group row">
             <label class="col-sm-3 col-form-label"> Total Kapasitas </label>
             <div class="col-sm-8">
             <input type="text" name="total_kapasitas" class="form-control" placeholder="Total Kapasitas" value="<?php echo $key->total_kapasitas ?>" >
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label"> Internet </label>
+            <div class="col-sm-8">
+              <input type="radio" name="internet" value="Ada"> Ada &nbsp;&nbsp;
+              <input type="radio" name="internet" value="Tidak"> Tidak<br>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label"> Wifi </label>
+            <div class="col-sm-8">
+              <input type="radio" name="wifi" value="Ada"> Ada &nbsp;&nbsp;
+              <input type="radio" name="wifi" value="Tidak"> Tidak<br>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label"> LCD </label>
+            <div class="col-sm-8">
+              <input type="radio" name="lcd" value="Ada"> Ada &nbsp;&nbsp;
+              <input type="radio" name="lcd" value="Tidak"> Tidak<br>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label"> Sound System </label>
+            <div class="col-sm-8">
+              <input type="radio" name="sound_system" value="Ada"> Ada &nbsp;&nbsp;
+              <input type="radio" name="sound_system" value="Tidak"> Tidak<br>
             </div>
           </div>
           <div class="form-group row">
@@ -41,7 +69,7 @@
           </div>
           <div class="page-header">
             <input type="submit" class="btn btn-success" value="EDIT">&nbsp;&nbsp;
-            <a href="<?php echo base_url()?>Penyakit"><button type="button" class="btn btn-danger">KEMBALI</button></a>
+            <a href="<?php echo base_url()?>Ruang"><button type="button" class="btn btn-danger">KEMBALI</button></a>
           </div>
           <?php echo form_close(); ?>
         <?php } ?>

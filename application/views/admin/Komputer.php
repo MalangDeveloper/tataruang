@@ -3,7 +3,7 @@
     <div class=" col-xs-12">
       <div class="x_panel">
         <div class="x_title">
-          <h3>DATA RUANG</h3>
+          <h3>DATA KURSUS</h3>
           <div class="clearfix"></div>
         </div><br>
         <div class="pull-right"><a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal_add_new"><span class="glyphicon glyphicon-plus"></span> Add New</a></div><br><br>
@@ -31,38 +31,34 @@
             <thead>
               <tr class="bg-group">
                 <th width="5px">NO</th>
-                <th>Kode Lab</th>
-                <th>Nama Ruang</th>
-                <th>Nama Gedung</th>
-                <th>Total Kapasitas</th>
-                <th>Internet</th>
-                <th>Wifi</th>
-                <th>LCD</th>
-                <th>Sound System</th>
-                <th>Catatan</th>
+                <th>Merk</th>
+                <th>Processor</th>
+                <th>Memori</th>
+                <th>Hardisk</th>
+                <th>Foto</th>
+                <th>Ruang</th>
+                <th>Keterangan</th>
                 <th>Action</th>
               </tr>
             </thead>
             <tbody>
               <?php 
                 $i=1;
-                foreach ($ruang as $key) 
+                foreach ($komputer as $key) 
                 {
               ?>
                 <tr>
                   <td><?php echo $i; ?></td>
-                  <td><?php echo $key->kode_lab;?></td>
+                  <td><?php echo $key->merk;?></td>
+                  <td><?php echo $key->processor;?></td>
+                  <td><?php echo $key->memori;?></td>
+                  <td><?php echo $key->hardisk;?></td>
+                  <td><?php echo $key->foto;?></td>
                   <td><?php echo $key->nama_ruang;?></td>
-                  <td><?php echo $key->nama_gedung;?></td>
-                  <td><?php echo $key->total_kapasitas;?></td>
-                  <td><?php echo $key->internet;?></td>
-                  <td><?php echo $key->wifi;?></td>
-                  <td><?php echo $key->lcd;?></td>
-                  <td><?php echo $key->sound_system;?></td>
-                  <td><?php echo $key->catatan;?></td>
+                  <td><?php echo $key->keterangan;?></td>
                   <td>
-                    <a href="<?= base_url() ?>Ruang/ubahRuang/<?= $key->id_ruang?>" class="btn btn-success"><span class="glyphicon glyphicon-edit"></span></a></button>
-                    <a href="<?= base_url() ?>Ruang/hapusRuang/<?= $key->id_ruang?>" onclick="return confirm('Apakah Anda Ingin Menghapus Data : <?=$key->nama_ruang;?> ?');" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a></button>
+                    <a href="<?= base_url() ?>Komputer/ubahKomputer/<?= $key->id_komputer?>" class="btn btn-success"><span class="glyphicon glyphicon-edit"></span></a></button>
+                    <a href="<?= base_url() ?>Komputer/hapusKomputer/<?= $key->id_komputer?>" onclick="return confirm('Apakah Anda Ingin Menghapus Data : <?=$key->merk;?> ?');" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a></button>
                   </td>
                 </tr>
               <?php
@@ -84,14 +80,58 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-        <h3 class="modal-title" id="myModalLabel">Tambah Ruang</h3>
+        <h3 class="modal-title" id="myModalLabel">Tambah Komputer</h3>
       </div>
-      <form class="form-horizontal" method="post" action="<?php echo base_url().'/Ruang/simpanRuang'?>">
+      <form class="form-horizontal" method="post" action="<?php echo base_url().'/Komputer/simpanKomputer'?>">
         <div class="modal-body">
           <div class="form-group">
-            <label class="control-label col-xs-3" >Nama Ruang</label>
+            <label class="control-label col-xs-3" >Merk</label>
             <div class="col-xs-8">
-              <input name="nama_ruang" class="form-control" type="text" placeholder="Nama Ruang" required>
+              <input name="merk" class="form-control" type="text" placeholder="Merk" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-xs-3" >Processor</label>
+            <div class="col-xs-8">
+              <input name="processor" class="form-control" type="text" placeholder="Processor" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-xs-3" >Memori</label>
+            <div class="col-xs-8">
+              <input name="memori" class="form-control" type="text" placeholder="Memori" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-xs-3" >Hardisk</label>
+            <div class="col-xs-8">
+              <input name="hardisk" class="form-control" type="text" placeholder="Hardisk" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-xs-3" >Foto</label>
+            <div class="col-xs-8">
+              <input name="foto" class="form-control" type="text" placeholder="Foto" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-xs-3" >Ruang</label>
+            <div class="col-sm-8">
+              <select class='form-control' id='ruang' name='id_ruang' required>
+                <option value="">-- Pilih Ruang--</option>
+                <?php foreach ($ruang as $a) {
+                  echo '<option value="'.$a->id_ruang.'" ';
+                  if ($key->id_ruang==$a->id_ruang)
+                    echo "selected";
+                  echo '>'.$a->nama_ruang.'</option>';
+                }?>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-xs-3" >Keterangan</label>
+            <div class="col-xs-8">
+              <textarea rows="5" cols="40" name="keterangan" class="form-control" placeholder="Keterangan"></textarea>
             </div>
           </div>
         </div>
