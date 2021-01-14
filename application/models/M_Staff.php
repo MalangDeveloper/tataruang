@@ -27,7 +27,8 @@ class M_Staff extends CI_Model {
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	public function countPemesanan()
 	{
-		$query = $this->db->query("SELECT COUNT(id_pemesanan) AS total FROM pemesanan");
+		$id_users=$this->session->userdata['id_users'];
+		$query = $this->db->query("SELECT COUNT(id_pemesanan) AS total FROM pemesanan WHERE id_user='$id_users'");
 		return $query->result();
 	}
 

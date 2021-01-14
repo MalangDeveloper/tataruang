@@ -127,15 +127,7 @@
               </select>
             </div>
           </div>
-        </div>
-        <div class="modal-body">
-          <div class="form-group">
-            <label class="control-label col-xs-3" >No. Telepon</label>
-            <div class="col-xs-8">
-              <input name="noWa" class="form-control" type="text" placeholder="No. Telepon" required>
-            </div>
-          </div>
-        </div>
+        </div>      
         <div class="modal-body">
           <div class="form-group">
             <label class="control-label col-xs-3" >Level</label>

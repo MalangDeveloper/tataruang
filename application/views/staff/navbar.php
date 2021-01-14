@@ -1,7 +1,7 @@
 <div class="col-md-3 left_col">
   <div class="left_col scroll-view">
     <div class="navbar nav_title" style="border: 0;">
-      <a href="<?php echo base_url()?>Staff" class="site_title"><i class="fa fa-user-md"></i> <span>Tata Ruang Laboratorium</span></a>
+      <a href="<?php echo base_url()?>Staff" class="site_title"><i class="fa fa-user-alt"></i> <span>Tata Ruang Laboratorium</span></a>
     </div>
     <div class="clearfix"></div>
     <!-- menu profile quick info -->
