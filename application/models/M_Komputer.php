@@ -27,11 +27,11 @@ class M_Komputer extends CI_Model {
 			'processor'=>$this->input->post('processor'),
 			'memori'=>$this->input->post('memori'),
 			'hardisk'=>$this->input->post('hardisk'),
-			'foto'=>$this->input->post('foto'),
+			'foto'=>$this->_uploadImage(),
 			'id_ruang'=>$this->input->post('id_ruang'),
 			'keterangan'=>$this->input->post('keterangan'),
 		);
-		$this->db->insert('komputer',$object);
+		// $this->db->insert('komputer',$object);
 	}
 
 	public function updateKomputer($id){
@@ -54,6 +54,25 @@ class M_Komputer extends CI_Model {
 		if($this->db->update("komputer",$data)){
 			return "Berhasil";
 		}
+	}
+
+	private function _uploadImage()
+	{
+		$config['upload_path']          = './assetsWelcome/komputer/';
+		$config['allowed_types']        = 'gif|jpg|png';
+		$config['file_name']            = $this->input->post('foto');
+		$config['overwrite']			= true;
+		$config['max_size']             = 1024; // 1MB
+		// $config['max_width']            = 1024;
+		// $config['max_height']           = 768;
+
+		$this->load->library('upload', $config);
+
+		if ($this->upload->do_upload('image')) {
+			return $this->upload->data("file_name");
+		}
+		
+		return "default.png";
 	}
 
 	function hapus($where,$table){

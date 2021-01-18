@@ -45,7 +45,7 @@
                   <td><?php echo $i; ?></td>
                   <td><?php echo $key->nama_kursus;?></td>
                   <td>
-                    <a class="btn btn-sm btn-warning" data-toggle="modal" data-target="#modal_edit<?=$key->id_kursus;?>"><span class="glyphicon glyphicon-edit"></span></a>
+                    <a class="btn btn-success" data-toggle="modal" data-target="#modal_edit<?=$key->id_kursus;?>"><span class="glyphicon glyphicon-edit"></span></a>
                     <a href="<?= base_url() ?>Kursus/hapusKursus/<?= $key->id_kursus?>" class="btn btn-danger" onclick="return confirm('Apakah Anda Ingin Menghapus Data : <?=$key->nama_kursus;?> ?');"><span class="glyphicon glyphicon-trash"></span></a></button>
                   </td>
                 </tr>

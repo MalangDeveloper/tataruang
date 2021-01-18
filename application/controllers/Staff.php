@@ -40,9 +40,13 @@ class Staff extends CI_Controller {
 
 	public function updateProfile()
 	{
+		date_default_timezone_set('Asia/Jakarta'); # add your city to set local time zone
+		$now = date('Y-m-d H:i:s');
+
 		$data['email'] = set_value('email');
 	    $data['nama'] = set_value('nama');
-	    $data['level'] = set_value('level');
+		$data['level'] = set_value('level');
+		$data['updated_at'] = $now;
 	    $this->session->set_userdata($data);
 	    $this->M_Staff->updateProfile($data); //memasukan data ke database
 	    $this->session->set_flashdata('success','Profile Berhasil Diubah');
@@ -50,8 +54,12 @@ class Staff extends CI_Controller {
 	}
 
 	function ubahpass(){
+		date_default_timezone_set('Asia/Jakarta'); # add your city to set local time zone
+		$now = date('Y-m-d H:i:s');
+
         $data = array(
-            'password'=>md5($this->input->post('password'))
+			'password'=>md5($this->input->post('password')),
+			'updated_at' => $now
         );
         $this->M_Staff->ubahpassword($data);
         $this->session->set_userdata($data);

@@ -89,9 +89,61 @@
       <form class="form-horizontal" method="post" action="<?php echo base_url().'/Ruang/simpanRuang'?>">
         <div class="modal-body">
           <div class="form-group">
+            <label class="control-label col-xs-3" >Kode Lab</label>
+            <div class="col-xs-8">
+              <input name="kode_lab" class="form-control" type="text" placeholder="Kode Lab" required>
+            </div>
+          </div>
+          <div class="form-group">
             <label class="control-label col-xs-3" >Nama Ruang</label>
             <div class="col-xs-8">
               <input name="nama_ruang" class="form-control" type="text" placeholder="Nama Ruang" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-xs-3" >Nama Gedung</label>
+            <div class="col-xs-8">
+              <input name="nama_gedung" class="form-control" type="text" placeholder="Nama Gedung" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-xs-3" >Total Kapasitas</label>
+            <div class="col-xs-8">
+              <input name="total_kapasitas" class="form-control" type="text" placeholder="Total Kapasitas" required>
+            </div>
+          </div>
+          <div class="form-group">
+          <label class="control-label col-xs-3" >Internet</label>
+            <div class="col-xs-8">
+              <input type="radio" name="internet" value="Ada"> Ada &nbsp;&nbsp;
+              <input type="radio" name="internet" value="Tidak"> Tidak<br>
+            </div>
+          </div>
+          <div class="form-group">
+          <label class="control-label col-xs-3" >Wifi</label>
+            <div class="col-xs-8">
+              <input type="radio" name="wifi" value="Ada"> Ada &nbsp;&nbsp;
+              <input type="radio" name="wifi" value="Tidak"> Tidak<br>
+            </div>
+          </div>
+          <div class="form-group">
+          <label class="control-label col-xs-3" >LCD</label>
+            <div class="col-xs-8">
+              <input type="radio" name="lcd" value="Ada"> Ada &nbsp;&nbsp;
+              <input type="radio" name="lcd" value="Tidak"> Tidak<br>
+            </div>
+          </div>
+          <div class="form-group">
+          <label class="control-label col-xs-3" >Sound System</label>
+            <div class="col-xs-8">
+              <input type="radio" name="sound_system" value="Ada"> Ada &nbsp;&nbsp;
+              <input type="radio" name="sound_system" value="Tidak"> Tidak<br>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-xs-3" >Catatan</label>
+            <div class="col-xs-8">
+              <textarea rows="5" cols="40" name="catatan" class="form-control" placeholder="Catatan"></textarea>
             </div>
           </div>
         </div>

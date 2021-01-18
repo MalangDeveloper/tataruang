@@ -36,29 +36,29 @@
           <div class="form-group row">
             <label class="col-sm-3 col-form-label"> Internet </label>
             <div class="col-sm-8">
-              <input type="radio" name="internet" value="Ada"> Ada &nbsp;&nbsp;
-              <input type="radio" name="internet" value="Tidak"> Tidak<br>
+              <input type="radio" name="internet" value="Ada" <?php echo ($key->internet =='Ada')? 'checked':'';?>> Ada &nbsp;&nbsp;
+              <input type="radio" name="internet" value="Tidak" <?php echo ($key->internet =='Tidak')? 'checked':'';?>> Tidak<br>
             </div>
           </div>
           <div class="form-group row">
             <label class="col-sm-3 col-form-label"> Wifi </label>
             <div class="col-sm-8">
-              <input type="radio" name="wifi" value="Ada"> Ada &nbsp;&nbsp;
-              <input type="radio" name="wifi" value="Tidak"> Tidak<br>
+              <input type="radio" name="wifi" value="Ada" <?php echo ($key->wifi =='Ada')? 'checked':'';?>> Ada &nbsp;&nbsp;
+              <input type="radio" name="wifi" value="Tidak" <?php echo ($key->wifi =='Tidak')? 'checked':'';?>> Tidak<br>
             </div>
           </div>
           <div class="form-group row">
             <label class="col-sm-3 col-form-label"> LCD </label>
             <div class="col-sm-8">
-              <input type="radio" name="lcd" value="Ada"> Ada &nbsp;&nbsp;
-              <input type="radio" name="lcd" value="Tidak"> Tidak<br>
+              <input type="radio" name="lcd" value="Ada" <?php echo ($key->lcd =='Ada')? 'checked':'';?>> Ada &nbsp;&nbsp;
+              <input type="radio" name="lcd" value="Tidak" <?php echo ($key->lcd =='Tidak')? 'checked':'';?>> Tidak<br>
             </div>
           </div>
           <div class="form-group row">
             <label class="col-sm-3 col-form-label"> Sound System </label>
             <div class="col-sm-8">
-              <input type="radio" name="sound_system" value="Ada"> Ada &nbsp;&nbsp;
-              <input type="radio" name="sound_system" value="Tidak"> Tidak<br>
+              <input type="radio" name="sound_system" value="Ada" <?php echo ($key->sound_system =='Ada')? 'checked':'';?>> Ada &nbsp;&nbsp;
+              <input type="radio" name="sound_system" value="Tidak" <?php echo ($key->sound_system =='Tidak')? 'checked':'';?>> Tidak<br>
             </div>
           </div>
           <div class="form-group row">

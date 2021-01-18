@@ -24,21 +24,9 @@ class Ruang extends CI_Controller {
 
 	// proses menyimpan Ruang setelah menambah data baru
 	function simpanRuang(){
-        $data = array();
-		$this->load->helper('url','form');
-		$this->load->library("form_validation");
-		
-		$this->form_validation->set_error_delimiters('<div style="color:red; margin-bottom: 5px">', '</div>');
-		$this->form_validation->set_rules('nama_ruang', 'Nama Ruang', 'required');
-
-		if($this->form_validation->run()==FALSE){
-			$this->session->set_flashdata('error','Tambah Ruang Gagal');
-	        redirect('Ruang');
-		}else{
-			$this->M_Ruang->inputRuang();
-			$this->session->set_flashdata('success','Tambah Ruang berhasil');
-			redirect('Ruang');
-		}
+		$this->M_Ruang->inputRuang();
+		$this->session->set_flashdata('success','Ruang Berhasil Ditambah');
+		redirect('Ruang','refresh');
     }
 
 	// proses update data Ruang

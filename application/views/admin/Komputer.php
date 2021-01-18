@@ -53,7 +53,7 @@
                   <td><?php echo $key->processor;?></td>
                   <td><?php echo $key->memori;?></td>
                   <td><?php echo $key->hardisk;?></td>
-                  <td><?php echo $key->foto;?></td>
+                  <td><img src="assetsWelcome/komputer/<?php echo $key->foto;?>" alt="" border=2 height=100 width=100><?php echo $key->foto;?></td>
                   <td><?php echo $key->nama_ruang;?></td>
                   <td><?php echo $key->keterangan;?></td>
                   <td>
@@ -111,7 +111,7 @@
           <div class="form-group">
             <label class="control-label col-xs-3" >Foto</label>
             <div class="col-xs-8">
-              <input name="foto" class="form-control" type="text" placeholder="Foto" required>
+              <input type="file" class="form-control" id="foto" name="foto" required>
             </div>
           </div>
           <div class="form-group">

@@ -34,6 +34,13 @@
             </div>
           </div>
           <div class="form-group row">
+          <label class="col-sm-3 col-form-label"> Foto </label>
+            <div class="col-sm-8">
+            <td><img src="<?php echo base_url('assetsWelcome/komputer/')?><?php echo $key->foto;?>" alt="" border=2 height=100 width=100><?php echo $key->foto;?></td>
+              <input type="file" class="form-control" id="foto" name="foto" required>
+            </div>
+          </div>
+          <div class="form-group row">
             <label class="col-sm-3 col-form-label" >Ruang</label>
             <div class="col-sm-8">
               <select class='form-control' id='ruang' name='id_ruang' required>

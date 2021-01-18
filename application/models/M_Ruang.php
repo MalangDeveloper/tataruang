@@ -29,6 +29,9 @@ class M_Ruang extends CI_Model {
 			'nama_gedung'=>$this->input->post('nama_gedung'),
 			'total_kapasitas'=>$this->input->post('total_kapasitas'),
 			'internet'=>$this->input->post('internet'),
+			'wifi'=>$this->input->post('wifi'),
+			'lcd'=>$this->input->post('lcd'),
+			'sound_system'=>$this->input->post('sound_system'),
 			'catatan'=>$this->input->post('catatan'),
 		);
 		$this->db->insert('ruang',$object);
@@ -41,6 +44,9 @@ class M_Ruang extends CI_Model {
 			'nama_gedung'=>$this->input->post('nama_gedung'),
 			'total_kapasitas'=>$this->input->post('total_kapasitas'),
 			'internet'=>$this->input->post('internet'),
+			'wifi'=>$this->input->post('wifi'),
+			'lcd'=>$this->input->post('lcd'),
+			'sound_system'=>$this->input->post('sound_system'),
 			'catatan'=>$this->input->post('catatan'),
 		);
 		$data = $this->input->post();
