@@ -54,19 +54,19 @@ class M_Pemesanan extends CI_Model {
 	}
 
 	public function simpanPemesanan(){
-		// $query = $this->db->select('*')
-  //                     ->from('ruang')
-  //                     ->get();
-		$object=array
-		(
-			'nama_ruang'=>$this->input->post('nama_ruang'),
-			'nama_gedung'=>$this->input->post('nama_gedung'),
+		$query = $this->db->select('*')
+                      ->from('pemesanan')
+                      ->get();
+        $id_users=$this->session->userdata['id_users'];
+		$object = array(
+			'id_fakultas'=>$this->input->post('id_fakultas'),
+			'id_kursus'=>$this->input->post('id_kursus'),
+			'id_instruktur'=>$this->input->post('id_instruktur'),
+			'id_ruang'=>$this->input->post('id_ruang'),
+			'id_user'=> $id_users,
 			'tanggal'=>$this->input->post('tanggal'),
 			'jam_awal'=>$this->input->post('jam_awal'),
 			'jam_akhir'=>$this->input->post('jam_akhir')
-			'id_fakultas'=>$this->input->post('id_fakultas'),
-			'id_kursus'=>$this->input->post('kursus'),
-			'id_instruktur'=>$this->input->post('instruktur'),			
 		);
 		$this->db->insert('pemesanan',$object);
 	}

@@ -18,6 +18,10 @@ class Pemesanan extends CI_Controller {
 	public function index()
 	{
 		$data['pemesanan'] = $this->M_Pemesanan->getDataPemesanan();
+		$data['fakultas']=$this->M_Pemesanan->ambilFakultas();
+		$data['kursus']=$this->M_Pemesanan->ambilKursus();
+		$data['instruktur']=$this->M_Pemesanan->ambilInstruktur();
+		$data['ruang']=$this->M_Pemesanan->ambilRuang();
 		$data['page']='pemesanan.php';
 		$this->load->view('Admin/menu', $data);
 	}
@@ -42,16 +46,9 @@ class Pemesanan extends CI_Controller {
 
 	public function simpanPemesanan()
 	{
-		$id_ruang=$this->input->post('id_ruang');
-        $tanggal=$this->input->post('tanggal');
-        $jam_awal=$this->input->post('jam_awal');
-        $jam_akhir=$this->input->post('jam_akhir');
-        $id_fakultas=$this->input->post('id_fakultas');
-        $id_kursus=$this->input->post('id_kursus');
-        $id_instruktur=$this->input->post('id_instruktur');
-        $this->session->set_flashdata('success','Tambah Pemesanan berhasil');
-        $this->M_Pemesanan->inputdata($id_ruang,$tanggal,$jam_awal,$jam_akhir,$id_fakultas,$id_kursus,$id_instruktur);
-        redirect('Pemesanan');
+        $this->M_Pemesanan->simpanPemesanan();
+		$this->session->set_flashdata('success','Ruang Berhasil Ditambah');
+		redirect('Pemesanan','refresh');
 	}
 
 }
