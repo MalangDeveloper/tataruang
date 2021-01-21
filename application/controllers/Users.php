@@ -43,34 +43,48 @@ class Users extends CI_Controller {
 
 	public function simpanUser()
 	{
-		$nama=$this->input->post('nama');
-        $email=$this->input->post('email');
-        $password=$this->input->post('password');
-        $id_fakultas=$this->input->post('id_fakultas');
-        $created_at=$this->input->post('created_at');
-        $updated_at=$this->input->post('updated_at');
-        $level=$this->input->post('level');
-        $this->session->set_flashdata('success','Tambah User berhasil');
-        $this->M_Users->inputdata($nama,$email,$password,$id_fakultas,$created_at,$updated_at,$level);
+	    $this->M_Users->inputdata(); //memasukan data ke database
+	    $this->session->set_flashdata('success','Tambah User berhasil');
         redirect('Users');
 	}
 
 	public function editProfil(){
 		$data['user']= $this->M_Users->getUserId();
+		$data['fakultas']=$this->M_Staff->ambilFakultas();
 		$data['page']='editProfile.php';
+		$this->load->view('admin/menu',$data);
+	}
+
+	public function editUsers($id){
+		$where = array('id_users' => $id);
+		$data['user'] = $this->M_Users->getDataID($where,'users')->result();
+		$data['fakultas']=$this->M_Staff->ambilFakultas();
+		date_default_timezone_set('Asia/Jakarta'); # add your city to set local time zone
+		$data['now']= date('Y-m-d H:i:s');
+		$data['page']='ubahUsers.php';
 		$this->load->view('admin/menu',$data);
 	}
 
 	public function updateProfile()
 	{
+		date_default_timezone_set('Asia/Jakarta'); # add your city to set local time zone
+		$now = date('Y-m-d H:i:s');
+
 		$data['email'] = set_value('email');
 	    $data['nama'] = set_value('nama');
 	    $data['id_fakultas'] = set_value('id_fakultas');
-	    $data['created_at'] = set_value('created_at');
+	    $data['updated_at'] = $now;
 	    $this->session->set_userdata($data);
 	    $this->M_Users->updateProfile($data); //memasukan data ke database
 	    $this->session->set_flashdata('success','Profile Berhasil Diubah');
 	    redirect('Users/editProfil'); //mengalihkan halaman
+	}
+
+	public function updateUsers($id)
+	{
+	    $this->M_Users->updateUsers($id); //memasukan data ke database
+	    $this->session->set_flashdata('success','Profile Berhasil Diubah');
+	    redirect('Users'); //mengalihkan halaman
 	}
 
 	function ubahpass(){
@@ -80,6 +94,15 @@ class Users extends CI_Controller {
         $this->M_Users->ubahpassword($data);
         $this->session->set_userdata($data);
         redirect('Users/editProfil');
+	}
+	
+	function ubahpassUsers($id){
+        $data = array(
+            'password'		=>md5($this->input->post('password'))
+        );
+        $this->M_Users->ubahpasswordUsers($data, $id);
+        $this->session->set_userdata($data);
+        redirect('Users');
     }
 
 	function hapus_user($id){

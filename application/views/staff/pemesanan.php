@@ -83,6 +83,9 @@
 </div>
 
 <!-- ============ MODAL ADD =============== -->
+<?php if(count($pemesanan) != 0){
+?></td>
+<?php var_dump("bvc")?></td>
 <div class="modal fade" id="modal_add_new" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -181,6 +184,8 @@
     </div>
   </div>
 </div>
+<?php }
+?>
 <!--END MODAL ADD-->
 
 <script type="text/javascript" src="<?php echo base_url();?>assetsDatatables/assets_ajax/js/jquery.js"></script>

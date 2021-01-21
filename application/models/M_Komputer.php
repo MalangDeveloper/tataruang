@@ -31,7 +31,7 @@ class M_Komputer extends CI_Model {
 			'id_ruang'=>$this->input->post('id_ruang'),
 			'keterangan'=>$this->input->post('keterangan'),
 		);
-		// $this->db->insert('komputer',$object);
+		$this->db->insert('komputer',$object);
 	}
 
 	public function updateKomputer($id){

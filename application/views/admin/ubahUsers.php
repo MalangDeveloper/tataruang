@@ -3,42 +3,17 @@
     <div class=" col-xs-12">
       <div class="x_panel">
         <div class="x_title">
-          <h3>DATA USER</h3>
+          <h3>EDIT USER</h3>
           <div class="clearfix"></div>
         </div><br>
 
-        <?php if ($this->session->flashdata('success')) {?>
-          <div class="alert alert-success alert-dismissible" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-            <?php echo $this->session->flashdata('success'); ?>
-          </div>
-        <?php  } elseif($this->session->flashdata('hapus')) {?>
-          <!-- validation message to display after form is submitted -->
-          <div class="alert alert-danger alert-dismissible" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-            <?php echo $this->session->flashdata('hapus'); ?> 
-          </div>
-        <?php } elseif($this->session->flashdata('error')) {?>
-          <!-- validation message to display after form is submitted -->
-          <div class="alert alert-danger alert-dismissible" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-            <?php echo $this->session->flashdata('error'); ?> 
-          </div>
-        <?php } ?>
-
         <?php foreach($user as $key) { ?>
-
-          <?php echo form_open_multipart("Users/updateProfile"); ?>
+          <?=form_open_multipart('Users/updateUsers/'.$key->id_users)?>
 
           <div class="form-group row">
             <label for="e-ma" class="col-sm-3 col-form-label" > E-mail </label>
             <div class="col-sm-8">
+              <input type="hidden" name="updated_at" class="form-control"  value="<?php echo $now ?>">
               <input type="hidden" name="id_users" class="form-control"  value="<?php echo $key->id_users ?>">
               <input type="hidden" name="level" class="form-control"  value="<?php echo $key->level ?>">
               <input type="text" name="email" class="form-control" placeholder="email" value="<?php echo $key->email ?>">
@@ -59,7 +34,8 @@
           <div class="form-group row">
             <label for="lavel" class="col-sm-3 col-form-label"> Level </label>
             <div class="col-sm-8">
-              <input type="text" name="level" class="form-control" value="<?php echo $key->level ?>" readonly>
+              <input type="radio" name="level" value="Admin" <?php echo ($key->level =='Admin')? 'checked':'';?>> Admin &nbsp;&nbsp;
+              <input type="radio" name="level" value="Staf" <?php echo ($key->level =='Staf')? 'checked':'';?>> Staff<br>
             </div>
           </div>
           <div class="form-group row">
@@ -77,7 +53,7 @@
             </div>
           </div>
         <br>
-          <center><button type="submit" class="btn btn-success" name="submit"><span class="oi oi-person"></span> EDIT</button>
+          <center><button type="submit" class="btn btn-success"><span class="oi oi-person"></span> EDIT</button>
             <a href="<?php echo base_url()?>Users"><button type="button" class="btn btn-danger">KEMBALI</button></a>
           <a 
                             href="javascript:;"
@@ -108,7 +84,7 @@
                   <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
                   <h4 class="modal-title">Ubah Password</h4>
               </div>
-              <form class="form-horizontal" action="<?php echo base_url('Users/ubahpass')?>" method="post" enctype="multipart/form-data" role="form">
+              <form class="form-horizontal" action="<?php echo base_url('Users/ubahpassUsers/'.$key->id_users)?>" method="post" enctype="multipart/form-data" role="form">
                 <div class="modal-body">
                         <div class="form-group">
                             <label class="col-lg-2 col-sm-2 control-label">Password</label>

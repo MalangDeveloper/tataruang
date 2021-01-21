@@ -122,7 +122,7 @@
                 <?php foreach ($ruang as $a) {
                   echo '<option value="'.$a->id_ruang.'" ';
                   if ($key->id_ruang==$a->id_ruang)
-                    echo "selected";
+                    echo "";
                   echo '>'.$a->nama_ruang.'</option>';
                 }?>
               </select>

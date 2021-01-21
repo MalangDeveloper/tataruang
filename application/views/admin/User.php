@@ -63,8 +63,8 @@
               <td><?php echo $key->created_at;?></td>
               <td><?php echo $key->updated_at;?></td>
               <td>
-                <a href="<?= base_url() ?>Users/editProfil/<?= $key->id_users?>" class="btn btn-danger" onclick="return confirm('Apakah Anda Ingin Menghapus Data : <?=$key->nama;?> ?');"><span class="glyphicon glyphicon-trash"></span></a>
-                <a href="<?= base_url() ?>Users/editProfil/<?= $key->id_users?>" class="btn btn-success"><span class="glyphicon glyphicon-edit"></span></a>
+                <a href="<?= base_url() ?>Users/hapus_user/<?= $key->id_users?>" class="btn btn-danger" onclick="return confirm('Apakah Anda Ingin Menghapus Data : <?=$key->nama;?> ?');"><span class="glyphicon glyphicon-trash"></span></a>
+                <a href="<?= base_url() ?>Users/editUsers/<?= $key->id_users?>" class="btn btn-success"><span class="glyphicon glyphicon-edit"></span></a>
               </td>
             </tr>
             <?php
@@ -121,7 +121,7 @@
                 <?php foreach ($fakultas as $a) {
                   echo '<option value="'.$a->id_fakultas.'" ';
                   if ($key->id_fakultas==$a->id_fakultas)
-                    echo "selected";
+                    echo "";
                   echo '>'.$a->nama_fakultas.'</option>';
                 }?>
               </select>
