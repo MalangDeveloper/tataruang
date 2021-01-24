@@ -60,6 +60,7 @@ class Admin extends CI_Controller {
 
     public function ubahPemesanan($id){
 		$where = array('id_pemesanan' => $id);
+		$data['pesan'] = $this->M_Pemesanan->getDataPemesanan();
 		$data['pemesanan'] = $this->M_Pemesanan->getdataID($where,'pemesanan')->result();
 		$data['fakultas']=$this->M_Pemesanan->ambilFakultas();
 		$data['kursus']=$this->M_Pemesanan->ambilKursus();
@@ -71,12 +72,65 @@ class Admin extends CI_Controller {
 
 	public function prosesUbahpemesanan($id)
 	{
-		$this->M_Pemesanan->updatePemesanan($id);
-		$this->session->set_flashdata('success','Pemesanan Berhasil Diubah');
-		redirect('Admin/DataPemesanan','refresh');
+		$jam1 = strtotime($_POST["jam_awal"]);
+		$jam2 = strtotime($_POST["jam_akhir"]);
+		
+		$this->db->select('*');
+		$this->db->from('pemesanan');
+		$this->db->where_not_in('id_pemesanan', $id );
+		$this->db->where('id_ruang', $this->input->post('id_ruang') );
+		$this->db->where('tanggal', $this->input->post('tanggal') );
+		$query = $this->db->get();
+
+		$jumlah = 0;
+		
+		if ( $query->num_rows() > 0 ){
+				$row = $query->result_array();
+				$count = $query->num_rows();
+				// print_r($row);
+				for ($i=0; $i < $count ; $i++) { 
+					$jam_mulai_cek = strtotime($row[$i]['jam_awal']); 
+					print($jam_mulai_cek);
+					print_r("&nbsp;");
+					$jam_akhir_cek= strtotime($row[$i]['jam_akhir']);
+					print($jam_akhir_cek);
+					print_r("<br>");
+
+				if (($jam_mulai_cek <= $jam1 && $jam1 >= $jam_akhir_cek && $jam_mulai_cek <= $jam2 && $jam2 >= $jam_akhir_cek)
+					||	($jam_mulai_cek >= $jam1 && $jam1 <= $jam_akhir_cek && $jam_mulai_cek >= $jam2 && $jam2 <= $jam_akhir_cek))
+				{
+					echo "dapat Updatee";	
+				}
+				else {
+					$jumlah++;
+					echo "gagal Update";
+					$this->session->set_flashdata('error','Pemesanan Gagal Update');
+					redirect(base_url()."Admin/ubahPemesanan/".$id);
+					return;
+				}
+				
+			}
+			if($jumlah == 0){
+				$this->M_Pemesanan->updatePemesanan($id);
+				print(" DAPAT Update");
+				$this->session->set_flashdata('success','Pemesanan Berhasil Update');
+				redirect('Pemesanan','refresh');
+			}
+		}
+		else{
+			$this->M_Pemesanan->updatePemesanan($id);
+			print("bisa Update ");
+			$this->session->set_flashdata('success','Pemesanan Berhasil Update');
+			redirect('Pemesanan','refresh');
+			return;
+		}
+
+		// $this->M_Pemesanan->updatePemesanan($id);
+		// $this->session->set_flashdata('success','Pemesanan Berhasil Diubah');
+		// redirect('Pemesanan','refresh');
 	}
 
-		function hapusPemesanan($id){
+	function hapusPemesanan($id){
 		$where = array('id_pemesanan' => $id);
 		$this->M_Pemesanan->hapus($where,'pemesanan');
 		$this->session->set_flashdata('success',"Data Pemesanan Berhasil Dihapus");

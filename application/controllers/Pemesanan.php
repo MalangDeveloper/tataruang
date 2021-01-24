@@ -82,22 +82,28 @@ class Pemesanan extends CI_Controller {
 					if (($jam_mulai_cek <= $jam1 && $jam1 >= $jam_akhir_cek && $jam_mulai_cek <= $jam2 && $jam2 >= $jam_akhir_cek)
 							||	($jam_mulai_cek >= $jam1 && $jam1 <= $jam_akhir_cek && $jam_mulai_cek >= $jam2 && $jam2 <= $jam_akhir_cek))
 					{
-						$this->M_Pemesanan->simpanPemesanan();
-						echo "dapat Ditambahkan";
-						$this->session->set_flashdata('success','Ruang Berhasil Ditambah');
-						redirect('Pemesanan','refresh');
+						echo "dapat Ditambahkan";	
 					}
 					else {
-						$this->session->set_flashdata('error','Ruang Gagal Ditambah');
+						$jumlah++;
+						echo "gagal Ditambahkan";
+						$this->session->set_flashdata('error','Pemesanan Gagal Ditambah');
 						redirect('Pemesanan/tambahPemesanan','refresh');
+						return;
 					}
 					
+				}
+				if($jumlah == 0){
+					$this->M_Pemesanan->simpanPemesanan();
+					print(" DAPAT DITAMBAH");
+					$this->session->set_flashdata('success','Pemesanan Berhasil Ditambah');
+					redirect('Pemesanan','refresh');
 				}
 		}
 		else{
 			$this->M_Pemesanan->simpanPemesanan();
 			print("bisa ditambah ");
-			$this->session->set_flashdata('success','Ruang Berhasil Ditambah');
+			$this->session->set_flashdata('success','Pemesanan Berhasil Ditambah');
 			redirect('Pemesanan','refresh');
 			return;
 		}

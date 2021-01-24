@@ -6,6 +6,28 @@
           <h3>Edit Pemesanan</h3>
           <div class="clearfix"></div>
         </div><br>
+
+        <?php if ($this->session->flashdata('success')) {?>
+          <div class="alert alert-success alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <?php echo $this->session->flashdata('success'); ?>
+          </div>
+        <?php } elseif($this->session->flashdata('hapus')) { ?>
+          <!-- validation message to display after form is submitted -->
+          <div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <?php echo $this->session->flashdata('hapus'); ?> 
+          </div>
+        <?php } elseif($this->session->flashdata('error')) {?>
+          <!-- validation message to display after form is submitted -->
+          <div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <?php echo $this->session->flashdata('error'); ?> 
+          </div>
+        <?php } ?>
+
         <?php foreach($pemesanan as $key) {?>
           <?=form_open_multipart('Staff/prosesUbahpemesanan/'.$key->id_pemesanan)?>
           <div class="form-group row">
@@ -59,7 +81,7 @@
                   echo '<option value="'.$a->id_ruang.'" ';
                   if ($key->id_ruang==$a->id_ruang)
                     echo "selected";
-                  echo '>'.$a->nama_ruang.'</option>';
+                    echo '>'.$a->nama_ruang.' - Gedung: '.$a->nama_gedung.'</option>';
                 }?>
               </select>
             </div>
@@ -88,6 +110,42 @@
           </div>
           <?php echo form_close(); ?>
         <?php } ?>
+
+        
+        <table class="table table-striped table-bordered data">
+          <thead>
+            <tr class="bg-group">
+              <th width="5px">NO</th>
+              <th>Kode Lab</th>
+              <th>Nama Ruang</th>
+              <th>Gedung</th>
+              <th>Tanggal</th>
+              <th>Jam Awal</th>
+              <th>Jam Akhir</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php 
+              $no = 1;
+              foreach ($pesan as $key) 
+              {
+            ?>
+            <tr>
+              <td><?php echo $no; ?></td>
+              <td><?php echo $key->kode_lab;?></td>
+              <td><?php echo $key->nama_ruang;?></td>
+              <td><?php echo $key->nama_gedung;?></td>
+              <td><?php echo $key->tanggal;?></td>
+              <td><?php echo $key->jam_awal;?></td>
+              <td><?php echo $key->jam_akhir;?></td>
+            </tr>
+            <?php
+              $no++;
+              }
+            ?>
+          </tbody>
+        </table>
+
         <div class="clearfix"></div>
       </div>
     </div>
@@ -95,3 +153,9 @@
 </div>
 <script type="text/javascript" src="<?php echo base_url();?>assetsDatatables/assets_ajax/js/jquery.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>assetsDatatables/assets_ajax/js/bootstrap.js"></script>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.data').DataTable();
+  });
+</script>

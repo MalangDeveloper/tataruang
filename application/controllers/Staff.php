@@ -9,6 +9,7 @@ class Staff extends CI_Controller {
 		$this->load->library(array('form_validation','session'));
 
 		$this->load->model('M_Staff');
+		$this->load->model('M_Pemesanan');
 		if(!$this->session->userdata('level'))
 		{
 			redirect('Welcome');
@@ -68,6 +69,7 @@ class Staff extends CI_Controller {
 
     public function ubahPemesanan($id){
 		$where = array('id_pemesanan' => $id);
+		$data['pesan'] = $this->M_Pemesanan->getDataPemesanan();
 		$data['pemesanan'] = $this->M_Staff->getdataID($where,'pemesanan')->result();
 		$data['fakultas']=$this->M_Staff->ambilFakultas();
 		$data['kursus']=$this->M_Staff->ambilKursus();
@@ -79,9 +81,63 @@ class Staff extends CI_Controller {
 
 	public function prosesUbahpemesanan($id)
 	{
-		$this->M_Staff->updatePemesanan($id);
-		$this->session->set_flashdata('success','Pemesanan Berhasil Diubah');
-		redirect('Staff/DataPemesanan','refresh');
+		$jam1 = strtotime($_POST["jam_awal"]);
+		$jam2 = strtotime($_POST["jam_akhir"]);
+		
+		$this->db->select('*');
+		$this->db->from('pemesanan');
+		$this->db->where_not_in('id_pemesanan', $id );
+		$this->db->where('id_ruang', $this->input->post('id_ruang') );
+		$this->db->where('tanggal', $this->input->post('tanggal') );
+		$query = $this->db->get();
+
+		$jumlah = 0;
+		
+		if ( $query->num_rows() > 0 ){
+				$row = $query->result_array();
+				$count = $query->num_rows();
+				// print_r($row);
+				for ($i=0; $i < $count ; $i++) { 
+					$jam_mulai_cek = strtotime($row[$i]['jam_awal']); 
+					print($jam_mulai_cek);
+					print_r("&nbsp;");
+					$jam_akhir_cek= strtotime($row[$i]['jam_akhir']);
+					print($jam_akhir_cek);
+					print_r("<br>");
+
+				if (($jam_mulai_cek <= $jam1 && $jam1 >= $jam_akhir_cek && $jam_mulai_cek <= $jam2 && $jam2 >= $jam_akhir_cek)
+					||	($jam_mulai_cek >= $jam1 && $jam1 <= $jam_akhir_cek && $jam_mulai_cek >= $jam2 && $jam2 <= $jam_akhir_cek))
+				{
+					echo "dapat Updatee";	
+				}
+				else {
+					$jumlah++;
+					echo "gagal Update";
+					$this->session->set_flashdata('error','Pemesanan Gagal Update');
+					redirect(base_url()."Staff/ubahPemesanan/".$id);
+					return;
+				}
+				
+			}
+			if($jumlah == 0){
+				$this->M_Pemesanan->updatePemesanan($id);
+				print(" DAPAT Update");
+				$this->session->set_flashdata('success','Pemesanan Berhasil Update');
+				redirect('Staff/DataPemesanan','refresh');
+			}
+		}
+		else{
+			$this->M_Pemesanan->updatePemesanan($id);
+			print("bisa Update ");
+			$this->session->set_flashdata('success','Pemesanan Berhasil Update');
+			redirect('Staff/DataPemesanan','refresh');
+			return;
+		}
+
+
+		// $this->M_Staff->updatePemesanan($id);
+		// $this->session->set_flashdata('success','Pemesanan Berhasil Diubah');
+		// redirect('Staff/DataPemesanan','refresh');
 	}
 
 	public function DataRuang()
