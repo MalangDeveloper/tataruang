@@ -75,6 +75,13 @@ class Instruktur extends CI_Controller {
     }
 
 	function hapusInstruktur($id){
+		$query = $this->db->query("Select * from pemesanan where id_instruktur = $id");
+		
+		if($query->result_array() != null){
+			$this->session->set_flashdata('error','Gagal Menghapus Instruktur, Data Instruktur Masih Digunakan Pada Tabel Pemesanan');
+			redirect('Instruktur');
+		}
+
 		$where = array('id_Instruktur' => $id);
 		$this->M_Instruktur->hapus($where,'Instruktur');
 		$this->session->set_flashdata('success',"Data Instruktur Berhasil Dihapus");

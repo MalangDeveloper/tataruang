@@ -108,7 +108,7 @@
           <div class="form-group">
             <label class="control-label col-xs-3" >Password</label>
             <div class="col-xs-8">
-              <input name="password" class="form-control" type="password" placeholder="Password" required>
+              <input name="password" class="form-control" type="password" placeholder="Password (minimal 8 huruf/angka)" minlength="8" required>
             </div>
           </div>
         </div>

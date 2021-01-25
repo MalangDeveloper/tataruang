@@ -90,7 +90,7 @@
                             <label class="col-lg-2 col-sm-2 control-label">Password</label>
                             <div class="col-lg-10">
                               <input type="hidden" id="id_users" name="id_users">
-                                <input type="password" class="form-control" id="password" name="password" placeholder="Password Baru">
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Password Baru" minlength="8">
                             </div>
                         </div>
                     <div class="modal-footer">

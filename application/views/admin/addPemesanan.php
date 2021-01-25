@@ -81,19 +81,19 @@
           <div class="form-group">
             <label class="control-label col-xs-3" >Tanggal</label>
             <div class="col-xs-8">
-              <input type="date" name="tanggal" class="form-control" format="Y/m/d">
+              <input type="date" name="tanggal" class="form-control" format="Y/m/d" required>
             </div>
           </div>
           <div class="form-group">
             <label class="control-label col-xs-3" >Jam Awal</label>
             <div class="col-xs-8">
-              <input type="time" name="jam_awal" class="form-control" >
+              <input type="time" name="jam_awal" class="form-control" required>
             </div>
           </div>
           <div class="form-group">
             <label class="control-label col-xs-3" >Jam Akhir</label>
             <div class="col-xs-8">
-              <input type="time" name="jam_akhir" class="form-control" >
+              <input type="time" name="jam_akhir" class="form-control" required>
             </div>
           </div>                  
         </div>

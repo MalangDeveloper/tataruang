@@ -45,6 +45,18 @@ class Ruang extends CI_Controller {
 	}
 
 	function hapusRuang($id){
+		$query = $this->db->query("Select * from pemesanan where id_ruang = $id");
+		if($query->result_array() != null){
+			$this->session->set_flashdata('error','Gagal Menghapus Ruang, Data Ruang Masih Digunakan Pada Tabel Pemesanan');
+			redirect('Ruang');
+		}
+
+		$query2 = $this->db->query("Select * from komputer where id_ruang = $id");
+		if($query2->result_array() != null){
+			$this->session->set_flashdata('error','Gagal Menghapus Ruang, Data Ruang Masih Digunakan Pada Tabel Komputer');
+			redirect('Ruang');
+		}
+
 		$where = array('id_ruang' => $id);
 		$this->M_Ruang->hapus($where,'Ruang');
 		$this->session->set_flashdata('success',"Data Ruang Berhasil Dihapus");

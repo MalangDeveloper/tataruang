@@ -61,6 +61,12 @@ class Kursus extends CI_Controller {
     }
 
 	function hapusKursus($id){
+		$query = $this->db->query("Select * from pemesanan where id_kursus = $id");
+		if($query->result_array() != null){
+			$this->session->set_flashdata('error','Gagal Menghapus Kursus, Data Kursus Masih Digunakan Pada Tabel Pemesanan');
+			redirect('Kursus');
+		}
+
 		$where = array('id_kursus' => $id);
 		$this->M_Kursus->hapus($where,'kursus');
 		$this->session->set_flashdata('success',"Data Kursus Berhasil Dihapus");

@@ -74,6 +74,18 @@ class Fakultas extends CI_Controller {
     }
 
 	function hapusFakultas($id){
+		$query = $this->db->query("Select * from pemesanan where id_fakultas = $id");
+		if($query->result_array() != null){
+			$this->session->set_flashdata('error','Gagal Menghapus Fakultas, Data Fakultas Masih Digunakan Pada Tabel Pemesanan');
+			redirect('Fakultas');
+		}
+
+		$query2 = $this->db->query("Select * from users where id_fakultas = $id");
+		if($query2->result_array() != null){
+			$this->session->set_flashdata('error','Gagal Menghapus Fakultas, Data Fakultas Masih Digunakan Pada Tabel Users');
+			redirect('Fakultas');
+		}
+
 		$where = array('id_fakultas' => $id);
 		$this->M_Fakultas->hapus($where,'Fakultas');
 		$this->session->set_flashdata('success',"Data Fakultas Berhasil Dihapus");

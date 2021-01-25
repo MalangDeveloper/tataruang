@@ -5,7 +5,7 @@
       <div class="col-md-12">
         <div class="x_panel">
           <div class="x_title">
-            <h2>Hallo, 
+            <h2>Admin, 
               <?php echo $this->session->userdata("nama");?>
               <i class="far fa-laugh-beam" style="font-size:24px;"></i></h2>
             <div class="clearfix"></div>

@@ -43,6 +43,14 @@ class Users extends CI_Controller {
 
 	public function simpanUser()
 	{
+		$email = $this->input->post('email');
+		$query = $this->db->query("Select * from users where email = '$email'");
+		
+		if($query->result_array() != null){
+			$this->session->set_flashdata('error','Gagal Menambahkan User Baru, Sudah Ada yang Menggunakan Username Tersebut');
+			redirect('Users');
+		}
+
 	    $this->M_Users->inputdata(); //memasukan data ke database
 	    $this->session->set_flashdata('success','Tambah User berhasil');
         redirect('Users');
@@ -82,6 +90,14 @@ class Users extends CI_Controller {
 
 	public function updateUsers($id)
 	{
+		$email = $this->input->post('email');
+		$query = $this->db->query("Select * from users where email = '$email' AND id_users != $id");
+		
+		if($query->result_array() != null){
+			$this->session->set_flashdata('error','Gagal Update User, Sudah Ada yang Menggunakan Username Tersebut');
+			redirect('Users');
+		}
+
 	    $this->M_Users->updateUsers($id); //memasukan data ke database
 	    $this->session->set_flashdata('success','Profile Berhasil Diubah');
 	    redirect('Users'); //mengalihkan halaman
@@ -106,6 +122,13 @@ class Users extends CI_Controller {
     }
 
 	function hapus_user($id){
+    	$query = $this->db->query("Select * from pemesanan where id_user = $id");
+		
+		if($query->result_array() != null){
+			$this->session->set_flashdata('error','Gagal Menghapus User, Data User Masih Digunakan Pada Tabel Pemesanan');
+			redirect('Users');
+		}
+
 		$where = array('id_users' => $id);
 		$this->M_Users->hapus($where,'users');
 		$this->session->set_flashdata('success','Hapus User berhasil');

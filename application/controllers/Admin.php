@@ -90,21 +90,21 @@ class Admin extends CI_Controller {
 				// print_r($row);
 				for ($i=0; $i < $count ; $i++) { 
 					$jam_mulai_cek = strtotime($row[$i]['jam_awal']); 
-					print($jam_mulai_cek);
-					print_r("&nbsp;");
+					// print($jam_mulai_cek);
+					// print_r("&nbsp;");
 					$jam_akhir_cek= strtotime($row[$i]['jam_akhir']);
-					print($jam_akhir_cek);
-					print_r("<br>");
+					// print($jam_akhir_cek);
+					// print_r("<br>");
 
 				if (($jam_mulai_cek <= $jam1 && $jam1 >= $jam_akhir_cek && $jam_mulai_cek <= $jam2 && $jam2 >= $jam_akhir_cek)
 					||	($jam_mulai_cek >= $jam1 && $jam1 <= $jam_akhir_cek && $jam_mulai_cek >= $jam2 && $jam2 <= $jam_akhir_cek))
 				{
-					echo "dapat Updatee";	
+					// echo "dapat Updatee";	
 				}
 				else {
 					$jumlah++;
-					echo "gagal Update";
-					$this->session->set_flashdata('error','Pemesanan Gagal Update');
+					// echo "gagal Update";
+					$this->session->set_flashdata('error','Pemesanan Gagal Update <br> Silakan Ganti Jam atau Tempat Penggunaan Ruang');
 					redirect(base_url()."Admin/ubahPemesanan/".$id);
 					return;
 				}
@@ -112,14 +112,14 @@ class Admin extends CI_Controller {
 			}
 			if($jumlah == 0){
 				$this->M_Pemesanan->updatePemesanan($id);
-				print(" DAPAT Update");
+				// print(" DAPAT Update");
 				$this->session->set_flashdata('success','Pemesanan Berhasil Update');
 				redirect('Pemesanan','refresh');
 			}
 		}
 		else{
 			$this->M_Pemesanan->updatePemesanan($id);
-			print("bisa Update ");
+			// print("bisa Update ");
 			$this->session->set_flashdata('success','Pemesanan Berhasil Update');
 			redirect('Pemesanan','refresh');
 			return;

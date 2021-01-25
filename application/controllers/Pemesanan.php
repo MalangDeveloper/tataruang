@@ -49,9 +49,6 @@ class Pemesanan extends CI_Controller {
 		$jam1 = strtotime($_POST["jam_awal"]);
 		$jam2 = strtotime($_POST["jam_akhir"]);
 
-		var_dump($jam1);
-		var_dump($jam2);
-
 		$this->db->select('*');
     $this->db->from('pemesanan');
 		$this->db->where('id_ruang', $this->input->post('id_ruang') );
@@ -68,11 +65,11 @@ class Pemesanan extends CI_Controller {
 				print_r("<br>");
 				for ($i=0; $i < $count ; $i++) { 
 					$jam_mulai_cek = strtotime($row[$i]['jam_awal']); 
-					print($jam_mulai_cek);
-					print_r("&nbsp;");
+					// print($jam_mulai_cek);
+					// print_r("&nbsp;");
 					$jam_akhir_cek= strtotime($row[$i]['jam_akhir']);
-					print($jam_akhir_cek);
-					print_r("<br>");
+					// print($jam_akhir_cek);
+					// print_r("<br>");
 
 					// if ($jam_mulai_cek <= $jam_awal && $jam_awal >= $jam_akhir_cek && $jam_mulai_cek <= $jam_akhir && $jam_akhir >= $jam_akhir_cek){
 					// 	$jumlah++;
@@ -82,12 +79,12 @@ class Pemesanan extends CI_Controller {
 					if (($jam_mulai_cek <= $jam1 && $jam1 >= $jam_akhir_cek && $jam_mulai_cek <= $jam2 && $jam2 >= $jam_akhir_cek)
 							||	($jam_mulai_cek >= $jam1 && $jam1 <= $jam_akhir_cek && $jam_mulai_cek >= $jam2 && $jam2 <= $jam_akhir_cek))
 					{
-						echo "dapat Ditambahkan";	
+						// echo "dapat Ditambahkan";	
 					}
 					else {
 						$jumlah++;
-						echo "gagal Ditambahkan";
-						$this->session->set_flashdata('error','Pemesanan Gagal Ditambah');
+						// echo "gagal Ditambahkan";
+						$this->session->set_flashdata('error','Pemesanan Gagal Ditambah <br> Silakan Ganti Jam atau Tempat Penggunaan Ruang');
 						redirect('Pemesanan/tambahPemesanan','refresh');
 						return;
 					}
@@ -95,14 +92,14 @@ class Pemesanan extends CI_Controller {
 				}
 				if($jumlah == 0){
 					$this->M_Pemesanan->simpanPemesanan();
-					print(" DAPAT DITAMBAH");
+					// print(" DAPAT DITAMBAH");
 					$this->session->set_flashdata('success','Pemesanan Berhasil Ditambah');
 					redirect('Pemesanan','refresh');
 				}
 		}
 		else{
 			$this->M_Pemesanan->simpanPemesanan();
-			print("bisa ditambah ");
+			// print("bisa ditambah ");
 			$this->session->set_flashdata('success','Pemesanan Berhasil Ditambah');
 			redirect('Pemesanan','refresh');
 			return;
