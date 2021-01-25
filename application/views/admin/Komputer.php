@@ -53,7 +53,7 @@
                   <td><?php echo $key->processor;?></td>
                   <td><?php echo $key->memori;?></td>
                   <td><?php echo $key->hardisk;?></td>
-                  <td><img src="assetsWelcome/komputer/<?php echo $key->foto;?>" alt="" border=2 height=100 width=100><?php echo $key->foto;?></td>
+                  <td><img src="Gambar/komputer/<?php echo $key->foto;?>" border=2 height=100 width=100></td>
                   <td><?php echo $key->nama_ruang;?></td>
                   <td><?php echo $key->keterangan;?></td>
                   <td>
@@ -82,7 +82,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
         <h3 class="modal-title" id="myModalLabel">Tambah Komputer</h3>
       </div>
-      <form class="form-horizontal" method="post" action="<?php echo base_url().'/Komputer/simpanKomputer'?>">
+      <form class="form-horizontal" method="post" action="<?php echo base_url().'/Komputer/simpanKomputer'?>" enctype="multipart/form-data">
         <div class="modal-body">
           <div class="form-group">
             <label class="control-label col-xs-3" >Merk</label>

@@ -28,7 +28,8 @@ class Welcome extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('home');
+		$data['pesan'] = $this->M_Welcome->getDataPemesanan();
+		$this->load->view('home',$data);
 	}
 
 	public function Konsultasi()

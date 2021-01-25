@@ -25,6 +25,11 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assetsDatatables/media/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assetsDatatables/media/css/dataTables.bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assetsDatatables/datatables.min.css"/>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 	
 	<!-- google fonts -->
 	<link href="//fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext" rel="stylesheet">
@@ -134,9 +139,48 @@
 <!-- //banner bottom -->
 
 <!-- slider -->
+<br><br>
+<div class="right_col" role="main">
+	<h3 class="heading mb-5 text-center">Jadwal Pemakaian Laboratorium</h3>
+<table class="table table-striped table-bordered data">
+          <thead>
+            <tr class="bg-group">
+              <th width="5px">NO</th>
+              <th>Kode Lab</th>
+              <th>Nama Ruang</th>
+              <th>Gedung</th>
+              <th>Tanggal</th>
+              <th>Jam Awal</th>
+              <th>Jam Akhir</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php 
+              $no = 1;
+              foreach ($pesan as $key) 
+              {
+            ?>
+            <tr>
+              <td><?php echo $no; ?></td>
+              <td><?php echo $key->kode_lab;?></td>
+              <td><?php echo $key->nama_ruang;?></td>
+              <td><?php echo $key->nama_gedung;?></td>
+              <td><?php echo $key->tanggal;?></td>
+              <td><?php echo $key->jam_awal;?></td>
+              <td><?php echo $key->jam_akhir;?></td>
+            </tr>
+            <?php
+              $no++;
+              }
+            ?>
+          </tbody>
+        </table>
+</div>
 </br>
 <section class="slider" id="tips">
 	<div class="container-fluid">
+		<hr width="50%" style="border: 1px black solid;" /><br>
+		<h3 class="heading mb-5 text-center">Visi dan Misi</h3>
 		<div class="row">
 			<div class="col-md-6 slider-left-img p-0">
 				<img src="assetsWelcome/images/tips1.jpg" class="img-fluid w-100" alt="" />
@@ -237,6 +281,19 @@
     <!-- js -->
     <script type="text/javascript" src="<?php echo base_url();?>assetsWelcome/js/bootstrap.js"></script>
     <script type="text/javascript" src="<?php echo base_url();?>assetsWelcome/js/jquery-2.2.3.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url();?>assetsDatatables/assets_ajax/js/jquery.js"></script>
+	<script type="text/javascript" src="<?php echo base_url();?>assetsDatatables/media/js/jquery2.js"></script>
+    <script type="text/javascript" src="<?php echo base_url();?>assetsDatatables/media/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="<?php echo base_url();?>assetsDatatables/datatables.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url();?>assetsDatatables/assets_ajax/js/jquery.js"></script>
+    <script type="text/javascript" src="<?php echo base_url();?>assetsDatatables/assets_ajax/js/bootstrap.js"></script>
+    <script type="text/javascript" src="<?php echo base_url();?>assetsDatatables/assets_ajax/js/jquery.dataTables.js"></script>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.data').DataTable();
+  });
+</script>
     <!-- //js -->
 
 	<!-- Responsiveslides -->
