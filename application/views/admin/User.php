@@ -135,7 +135,7 @@
               <select class='form-control' id='exampleFormControlSelect2' name='level' required>
                 <option value="">-- Level User --</option>
                 <option value="Admin">Admin</option>
-                <option value="Pakar">Pakar</option>
+                <option value="Staf">Staff</option>
               </select>
             </div>
           </div>
