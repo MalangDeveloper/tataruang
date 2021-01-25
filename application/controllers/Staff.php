@@ -153,5 +153,78 @@ class Staff extends CI_Controller {
 		$data['page']='komputer.php';
 		$this->load->view('Staff/menu', $data);
 	}
+
+	public function tambahPemesanan()
+	{
+		$data['pemesanan'] = $this->M_Pemesanan->getDataPemesanan();
+		$data['fakultas']=$this->M_Pemesanan->ambilFakultas();
+		$data['kursus']=$this->M_Pemesanan->ambilKursus();
+		$data['instruktur']=$this->M_Pemesanan->ambilInstruktur();
+		$data['ruang']=$this->M_Pemesanan->ambilRuang();
+		$data['page']='addPemesanan.php';
+		$this->load->view('Staff/menu', $data);
+	}
+
+	public function simpanPemesanan()
+	{
+		$jam1 = strtotime($_POST["jam_awal"]);
+		$jam2 = strtotime($_POST["jam_akhir"]);
+
+		var_dump($jam1);
+		var_dump($jam2);
+
+		$this->db->select('*');
+    	$this->db->from('pemesanan');
+		$this->db->where('id_ruang', $this->input->post('id_ruang') );
+		$this->db->where('tanggal', $this->input->post('tanggal') );
+
+		$query = $this->db->get();
+		$jumlah = 0;
+		
+		if ( $query->num_rows() > 0 )
+    {
+				$row = $query->result_array();
+				$count = $query->num_rows();
+				// print_r($row);
+				print_r("<br>");
+				for ($i=0; $i < $count ; $i++) { 
+					$jam_mulai_cek = strtotime($row[$i]['jam_awal']); 
+					print($jam_mulai_cek);
+					print_r("&nbsp;");
+					$jam_akhir_cek= strtotime($row[$i]['jam_akhir']);
+					print($jam_akhir_cek);
+					print_r("<br>");
+
+					if (($jam_mulai_cek <= $jam1 && $jam1 >= $jam_akhir_cek && $jam_mulai_cek <= $jam2 && $jam2 >= $jam_akhir_cek)
+							||	($jam_mulai_cek >= $jam1 && $jam1 <= $jam_akhir_cek && $jam_mulai_cek >= $jam2 && $jam2 <= $jam_akhir_cek))
+					{
+						echo "dapat Ditambahkan";	
+					}
+					else {
+						$jumlah++;
+						echo "gagal Ditambahkan ST";
+						$this->session->set_flashdata('error','Pemesanan Gagal Ditambah');
+						redirect('Staff/tambahPemesanan','refresh');
+						return;
+					}
+					
+				}
+				if($jumlah == 0){
+					$this->M_Pemesanan->simpanPemesanan();
+					print(" DAPAT DITAMBAH ST");
+					$this->session->set_flashdata('success','Pemesanan Berhasil Ditambah');
+					redirect('Staff/DataPemesanan','refresh');
+				}
+		}
+		else{
+			$this->M_Pemesanan->simpanPemesanan();
+			print("bisa ditambah ST");
+			$this->session->set_flashdata('success','Pemesanan Berhasil Ditambah');
+			redirect('Staff/DataPemesanan','refresh');
+			return;
+		}
+
+		$this->session->set_flashdata('success','Ruang Berhasil Ditambah');
+	}
 }
 ?>
