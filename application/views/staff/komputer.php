@@ -31,7 +31,7 @@
               <td><?php echo $key->processor;?></td>
               <td><?php echo $key->memori;?></td>
               <td><?php echo $key->hardisk;?></td>
-              <td><img src="<?php echo base_url('assetsWelcome/komputer/')?><?php echo $key->foto;?>" alt="" border=2 height=100 width=100><?php echo $key->foto;?></td>
+              <td><img src="<?php echo base_url('Gambar/komputer/')?><?php echo $key->foto;?>" alt="" border=2 height=100 width=100></td>
               <td><?php echo $key->nama_ruang;?></td>
               <td><?php echo $key->keterangan;?></td>
             </tr>

@@ -237,7 +237,7 @@
 					<div class="col-md-6 align-self-center">
 						<form action="<?php echo base_url("Welcome/aksi_login"); ?>" method="post">
 							<div class="form-group">
-								<label for="email" class="col-form-label">E-mail</label>
+								<label for="email" class="col-form-label">Username</label>
 								<input type="text" class="form-control" placeholder=" " name="email" id="email" required="">
 							</div>
 

@@ -105,7 +105,7 @@
             </div>
           </div>
           <div class="page-header">
-            <input type="submit" class="btn btn-success" value="EDIT">&nbsp;&nbsp;
+            <input type="submit" class="btn btn-success" value="SIMPAN">&nbsp;&nbsp;
             <a href="<?php echo base_url()?>Staff/DataPemesanan"><button type="button" class="btn btn-danger">KEMBALI</button></a>
           </div>
           <?php echo form_close(); ?>

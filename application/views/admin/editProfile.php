@@ -37,11 +37,11 @@
           <?php echo form_open_multipart("Users/updateProfile"); ?>
 
           <div class="form-group row">
-            <label for="e-ma" class="col-sm-3 col-form-label" > E-mail </label>
+            <label for="e-ma" class="col-sm-3 col-form-label" > Username </label>
             <div class="col-sm-8">
               <input type="hidden" name="id_users" class="form-control"  value="<?php echo $key->id_users ?>">
               <input type="hidden" name="level" class="form-control"  value="<?php echo $key->level ?>">
-              <input type="text" name="email" class="form-control" placeholder="email" value="<?php echo $key->email ?>">
+              <input type="text" name="email" class="form-control" placeholder="Username" value="<?php echo $key->email ?>">
             </div>
           </div>
           <div class="form-group row">
@@ -77,7 +77,7 @@
             </div>
           </div>
         <br>
-          <center><button type="submit" class="btn btn-success" name="submit"><span class="oi oi-person"></span> EDIT</button>
+          <center><button type="submit" class="btn btn-success" name="submit"><span class="oi oi-person"></span>SIMPAN</button>
             <a href="<?php echo base_url()?>Users"><button type="button" class="btn btn-danger">KEMBALI</button></a>
           <a 
                             href="javascript:;"

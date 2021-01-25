@@ -38,7 +38,7 @@
             <tr class="bg-group">
               <th width="5px">NO</th>
               <th>Nama</th>
-              <th>Email</th>
+              <th>Username</th>
               <th>Password</th>
               <th>Fakultas</th>
               <th>Level</th>
@@ -98,9 +98,9 @@
         </div>
         <div class="modal-body">
           <div class="form-group">
-            <label class="control-label col-xs-3" >Email</label>
+            <label class="control-label col-xs-3" >Username</label>
             <div class="col-xs-8">
-              <input name="email" class="form-control" type="email" placeholder="Email" required>
+              <input name="email" class="form-control" type="text" placeholder="Username" required>
             </div>
           </div>
         </div>

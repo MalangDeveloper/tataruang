@@ -15,7 +15,7 @@
               <input type="text" name="nama_Fakultas" class="form-control" placeholder="Nama Fakultas" value="<?php echo $key->nama_fakultas ?>" >
             </div>          
           <div class="page-header">
-            <input type="submit" class="btn btn-success" value="EDIT">&nbsp;&nbsp;
+            <input type="submit" class="btn btn-success" value="SIMPAN">&nbsp;&nbsp;
             <a href="<?php echo base_url()?>Fakultas"><button type="button" class="btn btn-danger">KEMBALI</button></a>
           </div>
           <?php echo form_close(); ?>
