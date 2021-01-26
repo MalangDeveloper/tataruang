@@ -36,6 +36,7 @@
                 <th>Memori</th>
                 <th>Hardisk</th>
                 <th>Foto</th>
+                <th>Total Komputer</th>
                 <th>Ruang</th>
                 <th>Keterangan</th>
                 <th>Action</th>
@@ -54,6 +55,7 @@
                   <td><?php echo $key->memori;?></td>
                   <td><?php echo $key->hardisk;?></td>
                   <td><img src="Gambar/komputer/<?php echo $key->foto;?>" border=2 height=100 width=100></td>
+                  <td><?php echo $key->total_komputer;?></td>
                   <td><?php echo $key->nama_ruang;?></td>
                   <td><?php echo $key->keterangan;?></td>
                   <td>
@@ -112,6 +114,12 @@
             <label class="control-label col-xs-3" >Foto</label>
             <div class="col-xs-8">
               <input type="file" class="form-control" id="foto" name="foto" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-xs-3" >Total Komputer</label>
+            <div class="col-xs-8">
+              <input name="total_komputer" class="form-control" type="number" placeholder="Total Komputer" required>
             </div>
           </div>
           <div class="form-group">

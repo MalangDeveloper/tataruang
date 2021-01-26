@@ -36,11 +36,16 @@
           <div class="form-group row">
             <label for="gambar" class="col-sm-3 col-form-label"> Foto </label>
             <div class="col-sm-8">
-              <img src="<?php echo base_url("Gambar/komputer/".$key->foto);?>" width="30%" height="30%"><input type="hidden" name="foto_lama" value="<?php echo $key->foto ?>">&nbsp&nbsp<?php echo $key->foto ?></span><br><br>
-              <input type="file" name="foto" id="foto" placeholder="Gambar" value="<?php echo $key->foto ?>" required>
+              <input type="hidden" name="foto_lama" value="<?php echo $key->foto ?>">
+              <input type="file" name="foto" id="foto" placeholder="Gambar" value="<?php echo $key->foto ?>" >
             </div>
           </div>
-
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label"> Total Komputer </label>
+            <div class="col-sm-8">
+            <input type="number" name="total_komputer" class="form-control" placeholder="Total Komputer" value="<?php echo $key->total_komputer ?>" >
+            </div>
+          </div>
           <div class="form-group row">
             <label class="col-sm-3 col-form-label" >Ruang</label>
             <div class="col-sm-8">

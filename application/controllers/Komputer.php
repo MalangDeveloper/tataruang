@@ -50,6 +50,7 @@ class Komputer extends CI_Controller {
 			'memori'=>$this->input->post('memori'),
 			'hardisk'=>$this->input->post('hardisk'),
 			'foto'=>$_FILES['foto']['name'],
+			'total_komputer'=>$this->input->post('total_komputer'),
 			'id_ruang'=>$this->input->post('id_ruang'),
 			'keterangan'=>$this->input->post('keterangan')
 		);
@@ -70,6 +71,22 @@ class Komputer extends CI_Controller {
 	public function prosesUbahKomputer($id)
 	{
 		$foto_lama = $this->input->post('foto_lama');
+
+		if($foto_lama == null){
+			$data = array(
+				'merk'=>$this->input->post('merk'),
+				'processor'=>$this->input->post('processor'),
+				'memori'=>$this->input->post('memori'),
+				'hardisk'=>$this->input->post('hardisk'),
+				'foto'=>'default.png',
+				'total_komputer'=>$this->input->post('total_komputer'),
+				'id_ruang'=>$this->input->post('id_ruang'),
+				'keterangan'=>$this->input->post('keterangan')
+			);
+			$this->M_Komputer->updateKomputer($id,$data);
+			redirect('Komputer');
+		}
+
 		if (!empty($_FILES['foto']['name'])) {
 			$config['upload_path'] = './Gambar/komputer/';
 			$config['allowed_types'] = 'jpg|png|jpeg';
@@ -94,6 +111,7 @@ class Komputer extends CI_Controller {
 			'memori'=>$this->input->post('memori'),
 			'hardisk'=>$this->input->post('hardisk'),
 			'foto'=>$_FILES['foto']['name'],
+			'total_komputer'=>$this->input->post('total_komputer'),
 			'id_ruang'=>$this->input->post('id_ruang'),
 			'keterangan'=>$this->input->post('keterangan')
 		);
