@@ -18,6 +18,12 @@ class M_Ruang extends CI_Model {
 		return $query->result();
 	}
 
+	public function getDataKomputer($value='')
+	{
+		$query = $this->db->query("SELECT komputer.*, ruang.id_ruang, ruang.nama_ruang FROM komputer JOIN ruang ON komputer.id_ruang = ruang.id_ruang");
+		return $query->result();
+	}
+
 	public function inputRuang(){
 		$query = $this->db->select('*')
                       ->from('ruang')

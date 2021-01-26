@@ -67,7 +67,22 @@
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
 				aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
-			</button>			
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mx-auto text-center">
+					<li class="nav-item">
+						<a class="nav-link active" href="<?php echo base_url()?>Welcome">Home
+							<span class="sr-only">(current)</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link scroll" href="#jadwal">Jadwal</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link scroll" href="#visimisi">Visi & Misi</a>
+					</li>
+				</ul>
+			</div>
 		</nav>
 		<!-- //bottom nav -->
 	</div>
@@ -110,74 +125,50 @@
 </div>
 <!-- //banner -->
 
-<!-- banner bottom -->
-<!-- <section class="banner-bottom py-5" id="about">
-	<div class="container py-md-5">
-		<div class="row bottom-grids text-center">
-			<div class="col-md-4 bottom-grid">
-				<span class="fa clr1 fa-laptop" style="font-size:50px;"></span>
-				<p class="number">1</p>
-				<h4>Informasi</h4>
-				<p class="mt-4">Anda bisa mendapatkan informasi mengenai tips agar tidak terjadi kekurangan vitamin pada tubuh dan dapat menambah pengetahuan anda mengenai masalah yang bisa terjadi apabila kekurangan vitamin pada tubuh anda.</p>
-			</div>
-			<div class="col-md-4 mt-md-0 mt-5 bottom-grid">
-				<span class="fa clr2 fa-stethoscope" style="font-size:50px;"></span>
-				<p class="number">2</p>
-				<h4>Konsultasi</h4>
-				<p class="mt-4">Anda dapat berkonsultasi mengenai masalah pada tubuh anda anda tanpa melakukan registrasi ataupun login. Langsung klik menu Konsultasi diatas.</p>
-			</div>
-			<div class="col-md-4 mt-md-0 mt-5 bottom-grid">
-				<span class="fab clr3 fa-wpforms"></span>
-				<p class="number">3</p>
-				<h4>Solusi</h4>
-				<p class="mt-4">Anda akan mendapat solusi penanganan pertama atau pencegahan setelah mengetahui hasil diagnosisnya. Ingat, jangan mengabaikan kebutuhan vitamin pada tubuh anda <span class="fa fa-smile"/></p>
-			</div>
-			<span class="border-line"></span>
-		</div>
-	</div>
-</section> -->
-<!-- //banner bottom -->
-
 <!-- slider -->
 <br><br>
-<div class="right_col" role="main">
-	<h3 class="heading mb-5 text-center">Jadwal Pemakaian Laboratorium</h3>
-<table class="table table-striped table-bordered data">
-          <thead>
-            <tr class="bg-group">
-              <th width="5px">NO</th>
-              <th>Kode Lab</th>
-              <th>Nama Ruang</th>
-              <th>Gedung</th>
-              <th>Tanggal</th>
-              <th>Jam Awal</th>
-              <th>Jam Akhir</th>
-            </tr>
-          </thead>
-          <tbody>
-            <?php 
-              $no = 1;
-              foreach ($pesan as $key) 
-              {
-            ?>
-            <tr>
-              <td><?php echo $no; ?></td>
-              <td><?php echo $key->kode_lab;?></td>
-              <td><?php echo $key->nama_ruang;?></td>
-              <td><?php echo $key->nama_gedung;?></td>
-              <td><?php echo $key->tanggal;?></td>
-              <td><?php echo $key->jam_awal;?></td>
-              <td><?php echo $key->jam_akhir;?></td>
-            </tr>
-            <?php
-              $no++;
-              }
-            ?>
-          </tbody>
-        </table>
-</div>
+<section class="slider" id="jadwal">
+	<div class="container-fluid">
+		<div class="right_col" role="main">
+			<h3 class="heading mb-5 text-center">Jadwal Pemakaian Laboratorium</h3>
+		<table class="table table-striped table-bordered data">
+		          <thead>
+		            <tr class="bg-group">
+		              <th width="5px">NO</th>
+		              <th>Kode Lab</th>
+		              <th>Nama Ruang</th>
+		              <th>Gedung</th>
+		              <th>Tanggal</th>
+		              <th>Jam Awal</th>
+		              <th>Jam Akhir</th>
+		            </tr>
+		          </thead>
+		          <tbody>
+		            <?php 
+		              $no = 1;
+		              foreach ($pesan as $key) 
+		              {
+		            ?>
+		            <tr>
+		              <td><?php echo $no; ?></td>
+		              <td><?php echo $key->kode_lab;?></td>
+		              <td><?php echo $key->nama_ruang;?></td>
+		              <td><?php echo $key->nama_gedung;?></td>
+		              <td><?php echo $key->tanggal;?></td>
+		              <td><?php echo $key->jam_awal;?></td>
+		              <td><?php echo $key->jam_akhir;?></td>
+		            </tr>
+		            <?php
+		              $no++;
+		              }
+		            ?>
+		          </tbody>
+		        </table>
+		</div>
+	</div>
+</section>
 </br>
-<section class="slider" id="tips">
+<section class="slider" id="visimisi">
 	<div class="container-fluid">
 		<hr width="50%" style="border: 1px black solid;" /><br>
 		<h3 class="heading mb-5 text-center">Visi dan Misi</h3>
@@ -257,26 +248,6 @@
 	</div>
 </div>
 <!-- signin Modal -->
-
-<!-- Vertically centered Modal -->
-<!--     <div class="modal fade" id="myModal_btn1" tabindex="-1" role="dialog" aria-labelledby="myModal_btn1" aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title text-capitalize text-center" id="exampleModalLongTitle"> Tips Kesehatan</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">×</span>
-				</button>
-			</div>
-			<div class="modal-body">
-				<img src="assetsWelcome/images/tips3.jpg" class="img-fluid mb-3" alt="Modal Image">
-				<p>- aa</p>
-				<p>- bb</p>
-			</div>
-		</div>
-	</div>
-</div> -->
-<!-- //Vertically centered Modal -->
 
     <!-- js -->
     <script type="text/javascript" src="<?php echo base_url();?>assetsWelcome/js/bootstrap.js"></script>

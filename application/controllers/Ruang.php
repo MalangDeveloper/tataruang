@@ -9,6 +9,7 @@ class Ruang extends CI_Controller {
 		$this->load->library(array('form_validation','session'));
 
 		$this->load->model('M_Ruang');
+		$this->load->model('M_Komputer');
 		if(!$this->session->userdata('level'))
 		{
 			redirect('Welcome');
@@ -18,6 +19,7 @@ class Ruang extends CI_Controller {
 	public function index()
 	{
 		$data['ruang']=$this->M_Ruang->getDataRuang();
+		$data['komputer']=$this->M_Ruang->getDataKomputer();
 		$data['page']='Ruang.php';
 		$this->load->view('Admin/menu',$data);
 	}
@@ -61,6 +63,14 @@ class Ruang extends CI_Controller {
 		$this->M_Ruang->hapus($where,'Ruang');
 		$this->session->set_flashdata('success',"Data Ruang Berhasil Dihapus");
 		redirect('Ruang');
+	}
+
+	public function detailKomputer($id)
+	{
+		$where = array('id_ruang' => $id);
+		$data['komputer'] = $this->M_Komputer->getDataID($where,'komputer')->result();
+		$data['page']='detailKomputer.php';
+		$this->load->view('admin/menu',$data);
 	}
 }
 ?>
