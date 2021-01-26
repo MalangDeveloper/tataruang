@@ -30,7 +30,9 @@
             <tr>
               <td><?php echo $no; ?></td>
               <td><?php echo $key->kode_lab;?></td>
-              <td><?php echo $key->nama_ruang;?></td>
+              <td><?php echo $key->nama_ruang;?>
+                <a href="<?= base_url() ?>Staff/detailKomputer/<?= $key->id_ruang?>" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> Detail</a></button>
+              </td>
               <td><?php echo $key->nama_gedung;?></td>
               <td><?php echo $key->total_kapasitas;?></td>
               <td><?php echo $key->internet;?></td>

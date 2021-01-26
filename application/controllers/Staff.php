@@ -10,6 +10,7 @@ class Staff extends CI_Controller {
 
 		$this->load->model('M_Staff');
 		$this->load->model('M_Pemesanan');
+		$this->load->model('M_Komputer');
 		if(!$this->session->userdata('level'))
 		{
 			redirect('Welcome');
@@ -222,6 +223,16 @@ class Staff extends CI_Controller {
 		}
 
 		$this->session->set_flashdata('success','Ruang Berhasil Ditambah');
+	}
+
+	public function detailKomputer($id)
+	{
+		$nama_ruang =$this->db->query("select * from ruang where id_ruang = $id")->row();
+		$data['nama_ruang'] = $nama_ruang;
+		$where = array('id_ruang' => $id);
+		$data['komputer'] = $this->M_Komputer->getDataID($where,'komputer')->result();
+		$data['page']='detailKomputer.php';
+		$this->load->view('staff/menu',$data);
 	}
 }
 ?>

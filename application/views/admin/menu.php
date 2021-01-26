@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Tata Ruang Laboratorium</title>
+    <link rel="icon" type="image/x-icon" href="<?php echo base_url('Gambar/icon.ico')?>">
 
     <!-- Bootstrap -->
     <link href="<?php echo base_url();?>vendors/bootstrap/dist/css/bootstrap.css" rel="stylesheet">

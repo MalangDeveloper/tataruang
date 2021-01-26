@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <title>Tata Ruang Laboratorium</title>
+<link rel="icon" type="image/x-icon" href="<?php echo base_url('Gambar/icon.ico')?>">
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -130,6 +131,7 @@
 <section class="slider" id="jadwal">
 	<div class="container-fluid">
 		<div class="right_col" role="main">
+		<hr width="50%" style="border: 1px black solid;" /><br>
 			<h3 class="heading mb-5 text-center">Jadwal Pemakaian Laboratorium</h3>
 		<table class="table table-striped table-bordered data">
 		          <thead>
