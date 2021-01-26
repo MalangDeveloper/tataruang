@@ -55,7 +55,7 @@
                   echo '<option value="'.$a->id_ruang.'" ';
                   if ($key->id_ruang==$a->id_ruang)
                     echo "selected";
-                  echo '>'.$a->nama_ruang.'</option>';
+                    echo '>'.$a->nama_ruang.' - Gedung: '.$a->nama_gedung.'</option>';
                 }?>
               </select>
             </div>

@@ -67,7 +67,10 @@ class Ruang extends CI_Controller {
 
 	public function detailKomputer($id)
 	{
+		$nama_ruang =$this->db->query("select * from ruang where id_ruang = $id")->row();
+		$data['nama_ruang'] = $nama_ruang;
 		$where = array('id_ruang' => $id);
+		$data['ruang']=$this->M_Ruang->getDataRuang();
 		$data['komputer'] = $this->M_Komputer->getDataID($where,'komputer')->result();
 		$data['page']='detailKomputer.php';
 		$this->load->view('admin/menu',$data);

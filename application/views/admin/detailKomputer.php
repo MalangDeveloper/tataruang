@@ -4,6 +4,9 @@
       <div class="x_panel">
         <div class="x_title">
           <h3>DATA KOMPUTER</h3>
+          <h4>
+            <?php echo $nama_ruang->kode_lab;?> - <?php echo $nama_ruang->nama_ruang;?>, Gedung <?php echo $nama_ruang->nama_gedung;?>
+          </h4>
           <div class="clearfix"></div>
         </div><br>
         <div class="pull-right"><a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal_add_new"><span class="glyphicon glyphicon-plus"></span> Add New</a></div><br><br>
@@ -127,9 +130,7 @@
                 <option value="">-- Pilih Ruang--</option>
                 <?php foreach ($ruang as $a) {
                   echo '<option value="'.$a->id_ruang.'" ';
-                  if ($key->id_ruang==$a->id_ruang)
-                    echo "";
-                  echo '>'.$a->nama_ruang.'</option>';
+                  echo '>'.$a->nama_ruang.' - Gedung: '.$a->nama_gedung.'</option>';
                 }?>
               </select>
             </div>
