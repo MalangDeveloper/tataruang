@@ -16,7 +16,7 @@
           <li><a href="<?php echo base_url();?>Kursus"><i class="fa fa-wpforms"></i> Data Kursus </a></li>
           <li><a href="<?php echo base_url();?>Ruang"><i class="fa fa-cube"></i> Data Ruang </a></li>
           <li><a href="<?php echo base_url();?>Komputer"><i class="fa fa-desktop"></i> Data Komputer </a></li>
-          <li><a href="<?php echo base_url();?>Pemesanan"><i class="fa fa-book"></i> Data Pemesanan </a></li>
+          <li><a href="<?php echo base_url();?>Pemesanan"><i class="fa fa-book"></i> Jadwal Ruang </a></li>
         </ul>
       </div>
     </div>

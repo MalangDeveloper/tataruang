@@ -14,7 +14,7 @@
             <div class="col-md-9 col-sm-9  ">
               <ul class="stats-overview">
                 <li>
-                  <span class="name"> Total Pemesanan </span>
+                  <span class="name"> Total Jadwal </span>
                   <span class="value text-success">
                     <?php foreach($totalPemesanan as $tampilPemesanan) { ?>
                       <span><?php echo $tampilPemesanan->total ?></span> </a>

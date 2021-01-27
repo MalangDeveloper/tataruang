@@ -21,7 +21,7 @@
       <div class="menu_section">
         <ul class="nav side-menu">
           <li><a href="<?php echo base_url();?>Staff"><i class="fa fa-home"></i> Home</a></li>
-          <li><a href="<?php echo base_url();?>Staff/DataPemesanan"><i class="fa fa-book"></i> Pemesanan</a></li>
+          <li><a href="<?php echo base_url();?>Staff/DataPemesanan"><i class="fa fa-book"></i> Jadwal</a></li>
           <li><a href="<?php echo base_url();?>Staff/DataRuang"><i class="fa fa-cube"></i> Ruang</a></li>
           <li><a href="<?php echo base_url();?>Staff/DataKomputer"><i class="fa fa-desktop"></i> Komputer</a></li>
         </ul>

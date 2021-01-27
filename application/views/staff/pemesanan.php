@@ -3,7 +3,7 @@
     <div class=" col-xs-12">
       <div class="x_panel">
         <div class="x_title">
-          <h3>DATA PEMESANAN</h3>
+          <h3>JADWAL PENGGUNAAN RUANG</h3>
           <div class="clearfix"></div>
         </div>
         <!-- <div class="pull-right"><a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal_add_new"><span class="glyphicon glyphicon-plus"></span> Add New</a></div><br><br> -->
@@ -83,9 +83,6 @@
   </div>
 </div>
 
-<!-- ============ MODAL ADD =============== -->
-
-<!--END MODAL ADD-->
 
 <script type="text/javascript" src="<?php echo base_url();?>assetsDatatables/assets_ajax/js/jquery.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>assetsDatatables/assets_ajax/js/bootstrap.js"></script>

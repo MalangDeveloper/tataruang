@@ -3,7 +3,7 @@
     <div class=" col-xs-12">
       <div class="x_panel">
         <div class="x_title">
-          <h3>Edit Pemesanan</h3>
+          <h3>EDIT JADWAL PENGGUNAAN RUANG</h3>
           <div class="clearfix"></div>
         </div><br>
 

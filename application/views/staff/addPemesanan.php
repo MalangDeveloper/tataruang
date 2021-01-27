@@ -3,7 +3,7 @@
     <div class=" col-xs-12">
       <div class="x_panel">
         <div class="x_title">
-          <h3>DATA PEMESANAN</h3>
+          <h3>JADWAL PENGGUNAAN RUANG</h3>
           <div class="clearfix"></div>
         </div><br>
 
@@ -141,19 +141,6 @@
   </div>
 </div>
 
-<!-- ============ MODAL ADD BARANG =============== -->
-<div class="modal fade" id="modal_add_new" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-        <h3 class="modal-title" id="myModalLabel">Tambah Pemesanan</h3>
-      </div>
-      
-    </div>
-  </div>
-</div>
-<!--END MODAL ADD BARANG-->
 
 <script type="text/javascript" src="<?php echo base_url();?>assetsDatatables/assets_ajax/js/jquery.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>assetsDatatables/assets_ajax/js/bootstrap.js"></script>
