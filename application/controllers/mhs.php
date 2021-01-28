@@ -35,6 +35,7 @@ class mhs extends CI_Controller {
 		$data['kursus']=$this->M_Pemesanan->ambilKursus();
 		$data['instruktur']=$this->M_Pemesanan->ambilInstruktur();
 		$data['ruang']=$this->M_Pemesanan->ambilRuang();
+		$data['page']='pemesananMahasiswa.php';
 		$this->load->view('Mahasiswa/menu',$data);
 	}
 
