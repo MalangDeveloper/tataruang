@@ -10,6 +10,7 @@ class mhs extends CI_Controller {
 
 		$this->load->model('M_Mahasiswa');
 		$this->load->model('M_Pemesanan');
+		$this->load->model('M_Staff');
 		if(!$this->session->userdata('nama_mahasiswa'))
 		{
 			redirect('Welcome');
@@ -58,6 +59,32 @@ class mhs extends CI_Controller {
 		$this->M_Mahasiswa->updateMahasiswa($id_Mahasiswa);
 		$this->session->set_flashdata('success','Mahasiswa Berhasil Diubah');
 		redirect('Mahasiswa','refresh');
+	}
+
+	public function editProfil(){
+		$data['mahasiswa']= $this->M_Mahasiswa->getMahasiswaId();
+		$data['fakultas']=$this->M_Staff->ambilFakultas();
+		$data['page']='editProfile.php';
+		$this->load->view('mahasiswa/menu',$data);
+	}
+
+	public function updateProfile()
+	{
+		$data['nim'] = set_value('nim');
+	    $data['nama_mahasiswa'] = set_value('nama_mahasiswa');
+	    $this->session->set_userdata($data);
+	    $this->M_Mahasiswa->updateProfile($data); //memasukan data ke database
+	    $this->session->set_flashdata('success','Profile Berhasil Diubah');
+	    redirect('mhs/editProfil'); //mengalihkan halaman
+	}
+
+	function ubahpass(){
+        $data = array(
+            'password'		=>md5($this->input->post('password'))
+        );
+        $this->M_Mahasiswa->ubahpassword($data);
+        $this->session->set_userdata($data);
+        redirect('mhs/editProfil');
 	}
 
     // proses update data Mahasiswa

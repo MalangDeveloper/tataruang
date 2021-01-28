@@ -17,8 +17,7 @@ class M_Mahasiswa extends CI_Model {
 	public function getMahasiswaId()
 	{
 		$id_mahasiswa=$this->session->userdata['id_mahasiswa'];
-		$level=$this->session->userdata['level'];
-		$query = $this->db->query("Select * from mahasiswa where id_mahasiswa='$id_mahasiswa' and level='$level'");
+		$query = $this->db->query("Select * from mahasiswa where id_mahasiswa='$id_mahasiswa'");
 		return $query->result();
 	}
 
@@ -34,6 +33,21 @@ class M_Mahasiswa extends CI_Model {
 		if($this->db->update("mahasiswa",$data)){
 			return "Berhasil";
 		}
+	}
+
+	public function updateProfile($data){
+		try{
+    		$id_mahasiswa=$this->session->userdata['id_mahasiswa'];
+	      	$this->db->where('id_mahasiswa',$id_mahasiswa)->limit(1)->update('mahasiswa', $data);
+	      	return true;
+	    }catch(Exception $e){}
+	}
+
+	function ubahpassword($data){
+		$id_mahasiswa=$this->session->userdata['id_mahasiswa'];
+        $this->db->where('id_mahasiswa',$id_mahasiswa);
+        $this->db->update('mahasiswa', $data);
+        return TRUE;
 	}
 
 	function inputMahasiswa(){
