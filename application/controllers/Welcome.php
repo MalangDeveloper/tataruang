@@ -76,12 +76,40 @@ class Welcome extends CI_Controller {
 			elseif ($level=='Staf')
 			{
 				redirect('Staff');
-			}
-			
+			}			
 		}
 		else
 		{
 			echo "<script>alert('email atau Password salah!!');history.go(-1);</script>";
+		}
+	}
+
+	function aksi_login_mhs()
+	{
+		$nim=$this->input->post('nim');
+		$password=$this->input->post('password');
+		$cek=$this->M_Welcome->cek_login_mhs($nim,$password);
+		$tes=count((array)$cek);
+		if ($tes > 0 ) 
+		{
+			$data_login=$this->M_Welcome->cek_login_mhs($nim,$password);
+			$nama_mahasiswa=$data_login->nama_mahasiswa;
+			$id_fakultas=$data_login->id_fakultas;
+			$tgl_lahir=$data_login->tgl_lahir;
+			$id_mahasiswa=$data_login->id_mahasiswa;
+			$nim=$data_login->nim;			
+			$data=array(
+				'nama_mahasiswa' => $nama_mahasiswa,
+				'id_fakultas' => $id_fakultas,
+				'tgl_lahir' => $tgl_lahir,
+				'id_mahasiswa' => $id_mahasiswa,
+				'nim' => $nim);
+			$this->session->set_userdata($data);			
+			redirect('mhs');	
+		}
+		else
+		{
+			echo "<script>alert('NIM atau Password salah!!');history.go(-1);</script>";
 		}
 	}
 
@@ -91,16 +119,5 @@ class Welcome extends CI_Controller {
 		$this->session->unset_userdata('level');
 		$this->session->sess_destroy();
 		redirect(base_url('Welcome'));
-	}
-
-	public function simpanKomentar()
-	{
-		$komen = $this->input->post('komen');
- 
-		$data = array(
-			'komen' => $komen
-		);
-		$this->M_Welcome->input_datakomentar($data,'komentar');
-		redirect('Welcome');
 	}
 }

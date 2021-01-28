@@ -49,7 +49,7 @@ class M_Mahasiswa extends CI_Model {
 				'id_fakultas'=>$this->input->post('id_fakultas'),
 			);
 		$this->db->insert('mahasiswa',$object);
-  }
+  	}
 
 	function hapus($where,$table){
 		$this->db->where($where);

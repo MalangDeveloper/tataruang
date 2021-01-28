@@ -3,7 +3,7 @@
     <div class=" col-xs-12">
       <div class="x_panel">
         <div class="x_title">
-          <h3>DATA PEMESANAN</h3>
+          <h3>DATA RUANG</h3>
           <div class="clearfix"></div>
         </div>
         <table class="table table-striped table-bordered data">

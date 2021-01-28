@@ -52,10 +52,13 @@
 			</h1>
 			<!-- //logo -->
 			<div class="w3ls_right_nav ml-auto d-flex">
-				<div class="nav-icon d-flex">
+				<div class=" d-flex">
 					<!-- sigin -->
 					<a class="text-white login_btn align-self-center mx-md-3" data-toggle="modal" data-target="#exampleModal1">
-						<i class="far fa-user"></i>
+						<button><i class="far fa-user"> Admin & Staff</i></button>
+					</a>
+					<a class="text-white login_btn align-self-center mx-md-3" data-toggle="modal" data-target="#exampleModal11">
+						<button><i class="far fa-user"> Mahasiswa</i></button>
 					</a>
 					<!-- <button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#loginModal">Login</button> -->
 					<!-- sigin -->
@@ -217,7 +220,7 @@
 	<div class="agilemodal-dialog modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Login</h5>
+				<h5 class="modal-title" id="exampleModalLabel">Login Admin & Staff</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">×</span>
 				</button>
@@ -232,6 +235,45 @@
 							<div class="form-group">
 								<label for="email" class="col-form-label">Username</label>
 								<input type="text" class="form-control" placeholder=" " name="email" id="email" required="">
+							</div>
+
+							<div class="form-group">
+								<label class="col-form-label">Password</label>
+								<input type="password" class="input100 form-control" placeholder=" " name="password" required="">
+							</div>
+					
+							<div class="right-w3l">
+								<input type="submit" nama="submit" class="form-control" value="Login">
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- signin Modal -->
+
+<!-- signin Modal -->
+<div class="modal fade" id="exampleModal11" tabindex="-1" role="dialog" aria-labelledby="exampleModal1" aria-hidden="true">
+	<div class="agilemodal-dialog modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Login Mahasiswa</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+			</div>
+			<div class="modal-body  pt-3 pb-5 px-sm-5">
+				<div class="row">
+					<div class="col-md-6">
+						<img src="assetsWelcome/images/t4.png" class="img-fluid w-100" alt="login_image"/>
+					</div>
+					<div class="col-md-6 align-self-center">
+						<form action="<?php echo base_url("Welcome/aksi_login_mhs"); ?>" method="post">
+							<div class="form-group">
+								<label for="nim" class="col-form-label">NIM</label>
+								<input type="text" class="form-control" placeholder=" " name="nim" id="nim" required="">
 							</div>
 
 							<div class="form-group">
