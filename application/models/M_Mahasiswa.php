@@ -63,7 +63,12 @@ class M_Mahasiswa extends CI_Model {
 				'id_fakultas'=>$this->input->post('id_fakultas'),
 			);
 		$this->db->insert('mahasiswa',$object);
-  	}
+	  }
+	  
+	function addPemesananMhs($data){
+		$this->db->insert('pemesananmhs',$data);
+    	return true;
+	}
 	
 	function ubahpasswordMahasiswa($data, $id_mahasiswa){
 		$this->db->where('id_mahasiswa',$id_mahasiswa);

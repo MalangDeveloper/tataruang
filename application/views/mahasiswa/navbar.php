@@ -11,6 +11,7 @@
         <ul class="nav side-menu">
           <li><a href="<?php echo base_url();?>mhs"><i class="fa fa-home"></i> Home</a>
           <li><a href="<?php echo base_url();?>mhs/jadwalRuang"><i class="fa fa-book"></i> Jadwal Ruang </a></li>
+          <li><a href="<?php echo base_url();?>mhs/jadwal"><i class="fa fa-book"></i> Jadwal yang Diikuti </a></li>
         </ul>
       </div>
     </div>

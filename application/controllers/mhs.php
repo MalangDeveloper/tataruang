@@ -40,6 +40,17 @@ class mhs extends CI_Controller {
 		$this->load->view('Mahasiswa/menu',$data);
 	}
 
+	public function Jadwal()
+	{
+		$data['pemesanan'] = $this->M_Pemesanan->getDataPemesananJadwalMhs();
+		$data['fakultas']=$this->M_Pemesanan->ambilFakultas();
+		$data['kursus']=$this->M_Pemesanan->ambilKursus();
+		$data['instruktur']=$this->M_Pemesanan->ambilInstruktur();
+		$data['ruang']=$this->M_Pemesanan->ambilRuang();
+		$data['page']='jadwalMahasiswa.php';
+		$this->load->view('Mahasiswa/menu',$data);
+	}
+
 	// proses menyimpan Mahasiswa setelah menambah data baru
 	function simpanMahasiswa(){
 		$this->M_Mahasiswa->inputMahasiswa();
@@ -107,18 +118,21 @@ class mhs extends CI_Controller {
         }
     }
 
-	function hapusMahasiswa($id){
-		$query = $this->db->query("Select * from pemesanan where id_Mahasiswa = $id");
-		
-		if($query->result_array() != null){
-			$this->session->set_flashdata('error','Gagal Menghapus Mahasiswa, Data Mahasiswa Masih Digunakan Pada Tabel Pemesanan');
-			redirect('Mahasiswa');
-		}
+	function batalMengikuti($id){
+		$where = array('id_pemesananmhs' => $id);
+		$this->M_Mahasiswa->hapus($where,'pemesananmhs');
+		$this->session->set_flashdata('success',"Jadwal Mengikuti Berhasil Dihapus");
+		redirect('mhs/jadwal');
+	}
 
-		$where = array('id_Mahasiswa' => $id);
-		$this->M_Mahasiswa->hapus($where,'Mahasiswa');
-		$this->session->set_flashdata('success',"Data Mahasiswa Berhasil Dihapus");
-		redirect('Mahasiswa');
+	public function ikuti($id)
+	{
+		$data['id_mahasiswa'] = $this->session->userdata['id_mahasiswa'];;
+
+		$data['id_pemesanan'] = $id;
+	    $this->M_Mahasiswa->addPemesananMhs($data); //memasukan data ke database
+	    $this->session->set_flashdata('success','Jadwal yang Akan Diikuti Berhasil Ditambahkan');
+	    redirect('mhs/jadwalRuang'); //mengalihkan halaman
 	}
 
 	// function inputMahasiswa($nama_Mahasiswa){

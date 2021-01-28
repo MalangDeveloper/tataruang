@@ -30,7 +30,7 @@
 
         <table class="table table-striped table-bordered data">
           <thead>
-            <tr class="bg-group"">
+            <tr class="bg-group">
               <th width="5px">NO</th>
               <th>Kode Lab</th>
               <th>Nama Ruang</th>
@@ -59,7 +59,7 @@
               <td><?php echo $key->jam_akhir;?></td>
               <td><?php echo $key->nama_kursus;?></td>
               <td><?php echo $key->nama_instruktur;?></td>      
-              <td><a href="<?= base_url() ?>mhs/ikuti/<?= $key->id_pemesanan?>" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span></a></td>                      
+              <td><a href="<?= base_url() ?>mhs/batalMengikuti/<?= $key->id_pemesananmhs?>" onclick="return confirm('Apakah Anda Ingin Menghapus Jadwal yang Diikuti : <?=$key->nama_kursus;?> ?');" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a></button></td>
             </tr>
             <?php
               $no++;
