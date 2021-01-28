@@ -59,7 +59,7 @@
               <td><?php echo $key->jam_akhir;?></td>
               <td><?php echo $key->nama_kursus;?></td>
               <td><?php echo $key->nama_instruktur;?></td>      
-              <td><a href="<?= base_url() ?>mhs/ikuti/<?= $key->id_pemesanan?>" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span></a></td>                      
+              <td><a href="<?= base_url() ?>mhs/ikuti/<?= $key->id_pemesanan?>" onclick="return confirm('Apakah Anda Ingin Menambahkan Jadwal yang Diikuti : <?=$key->nama_kursus;?> ?');" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span></a></td>
             </tr>
             <?php
               $no++;

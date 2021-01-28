@@ -14,8 +14,20 @@ class M_Pemesanan extends CI_Model {
 
 	function getDataPemesananMhs()
 	{
+		$id_mahasiswa=$this->session->userdata['id_mahasiswa'];
+		$array = '';
+		$query = $this->db->query("select * from pemesananmhs where id_mahasiswa = $id_mahasiswa");
+		if($query->num_rows()>0){
+			 $result = $query->result_array();
+			  foreach($result as $id){
+				$array .= $id['id_pemesanan'] . ",";
+			  }
+		}
+		$array = rtrim($array, ", ");
+
 		$id_fakultas=$this->session->userdata['id_fakultas'];
-		$query = $this->db->query("SELECT ruang.id_ruang, ruang.kode_lab, ruang.nama_ruang, ruang.nama_gedung, ins.id_instruktur, ins.nama_instruktur, kursus.id_kursus, kursus.nama_kursus, fakultas.id_fakultas, fakultas.nama_fakultas, pesan.* from pemesanan as pesan JOIN ruang as ruang ON pesan.id_ruang = ruang.id_ruang JOIN instruktur as ins ON pesan.id_instruktur = ins.id_instruktur JOIN kursus as kursus ON pesan.id_kursus = kursus.id_kursus JOIN fakultas as fakultas ON pesan.id_fakultas = fakultas.id_fakultas WHERE fakultas.id_fakultas='$id_fakultas'");
+		// $query = $this->db->query("SELECT ruang.id_ruang, ruang.kode_lab, ruang.nama_ruang, ruang.nama_gedung, ins.id_instruktur, ins.nama_instruktur, kursus.id_kursus, kursus.nama_kursus, fakultas.id_fakultas, fakultas.nama_fakultas, pesan.* from pemesanan as pesan JOIN ruang as ruang ON pesan.id_ruang = ruang.id_ruang JOIN instruktur as ins ON pesan.id_instruktur = ins.id_instruktur JOIN kursus as kursus ON pesan.id_kursus = kursus.id_kursus JOIN fakultas as fakultas ON pesan.id_fakultas = fakultas.id_fakultas WHERE fakultas.id_fakultas='$id_fakultas'");
+		$query = $this->db->query("SELECT ruang.id_ruang, ruang.kode_lab, ruang.nama_ruang, ruang.nama_gedung, ins.id_instruktur, ins.nama_instruktur, kursus.id_kursus, kursus.nama_kursus, fakultas.id_fakultas, fakultas.nama_fakultas, pesan.* from pemesanan as pesan JOIN ruang as ruang ON pesan.id_ruang = ruang.id_ruang JOIN instruktur as ins ON pesan.id_instruktur = ins.id_instruktur JOIN kursus as kursus ON pesan.id_kursus = kursus.id_kursus JOIN fakultas as fakultas ON pesan.id_fakultas = fakultas.id_fakultas WHERE fakultas.id_fakultas='$id_fakultas' AND pesan.id_pemesanan NOT IN ($array)");
 		return $query->result();
 	}
 
