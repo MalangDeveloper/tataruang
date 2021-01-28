@@ -50,6 +50,12 @@ class M_Mahasiswa extends CI_Model {
 			);
 		$this->db->insert('mahasiswa',$object);
   	}
+	
+	function ubahpasswordMahasiswa($data, $id_mahasiswa){
+		$this->db->where('id_mahasiswa',$id_mahasiswa);
+		$this->db->update('mahasiswa', $data);
+		return TRUE;
+	}
 
 	function hapus($where,$table){
 		$this->db->where($where);
