@@ -76,6 +76,11 @@
           </tbody>
         </table>
         <div class="clearfix"></div>
+        <br><br>
+        <div class="agileinfo_mail_grid_right submit-buttons text-center">
+          <p><b>Anda bisa menyimpan data jadwal ruang yang telah dipesan dengan klik button dibawah ini.</b></p>
+          <a target="_blank" href="<?php echo base_url(). 'Cetak/cetakPdf'; ?>"><button class="btn btn-warning"><span class="far fa-file-pdf"></span> PDF </button></a>
+        </div>
       </div>
     </div>
   </div>

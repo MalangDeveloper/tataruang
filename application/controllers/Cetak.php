@@ -28,14 +28,14 @@ class Cetak extends CI_Controller {
 
 	public function index()
 	{
-		$data['pemeriksaan']=$this->M_Cetak->view_row(); 
+		$data['pemesanan']=$this->M_Cetak->view_row(); 
   		$this->load->view('admin/preview', $data);
 	}
 
 	public function cetakPdf(){
 	    $this->load->library('dompdf_gen'); 
 
-	    $data['pemeriksaan']=$this->M_Cetak->view_row();
+	    $data['pemesanan']=$this->M_Cetak->view_row();
 	    $this->load->view('print', $data);
 
 	    $paper_size='A4'; //paper size
@@ -46,7 +46,7 @@ class Cetak extends CI_Controller {
 	    $dompdf = new DOMPDF();
 	    $this->dompdf->load_html($html);
 	    $this->dompdf->render();
-	    $this->dompdf->stream("Data Pemeriksaan.pdf", array('Attachment' =>0));
+	    $this->dompdf->stream("Data Pemesanan.pdf", array('Attachment' =>0));
 	    // unset($html);
 	    // unset($dompdf);
   	}

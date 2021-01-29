@@ -1,7 +1,7 @@
 <!DOCTYPE html> 
 <html> 
 <head> 
- <title>Pemeriksaan</title> 
+ <title>Pemesanan</title> 
  <style> 
   table{ 
    border-collapse: collapse; 
@@ -23,28 +23,36 @@
 </head> 
 
 <body> 
-<h1><p style="text-align: center">Data Pemeriksaan</p> </h1>
+<h1><p style="text-align: center">Data Pemesanan</p> </h1>
 <table> 
  <tr> 
-      <th>Tanggal Pemeriksaan</th>
-      <th>Penyakit</th>
-      <th>Persentase (%)</th>
-      <th>Status</th>
-      <th>Tanggal direvisi</th>
-      <th>Pemeriksaan</th>
+      <th width="5px">NO</th>
+      <th>Kode Lab</th>
+      <th>Nama Ruang</th>
+      <th>Gedung</th>
+      <th>Tanggal</th>
+      <th>Jam Awal</th>
+      <th>Jam Akhir</th>
+      <th>Fakultas</th>
+      <th>Kursus</th>
+      <th>Nama Instruktur</th>
+      <th>Nama Staff</th>      
  </tr> 
- <?php $id=0; foreach ($pemeriksaan as $key) { 
+ <?php $id=0; foreach ($pemesanan as $key) { 
  $id++; 
  ?> 
   <tr>
-  <td><?php echo $key->tgl_pemeriksaan;?></td>
-  <td><?php echo $key->nm_penyakit;?></td>
-  <td><?php echo $key->hasil;?></td>
-  <td><?php echo $key->status;?></td>
-  <td><?php echo $key->tgl_direvisi;?></td>
-  <td><?php echo $key->nama;?></td>
-
-  
+    <td><?php echo $no; ?></td>
+    <td><?php echo $key->kode_lab;?></td>
+    <td><?php echo $key->nama_ruang;?></td>
+    <td><?php echo $key->nama_gedung;?></td>
+    <td><?php echo $key->tanggal;?></td>
+    <td><?php echo $key->jam_awal;?></td>
+    <td><?php echo $key->jam_akhir;?></td>
+    <td><?php echo $key->nama_fakultas;?></td>
+    <td><?php echo $key->nama_kursus;?></td>
+    <td><?php echo $key->nama_instruktur;?></td>
+    <td><?php echo $key->nama;?></td>
   </tr> 
  <?php }?> 
 </table> 

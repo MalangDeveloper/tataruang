@@ -1,6 +1,7 @@
 <!DOCTYPE html> 
 <html><head> 
- <title>Pemeriksaan</title> 
+ <title>Cetak Jadwal</title> 
+ <link rel="icon" type="image/x-icon" href="<?php echo base_url('Gambar/icon.ico')?>">
  <style> 
   table{ 
    border-collapse: collapse; 
@@ -22,42 +23,46 @@
  <meta name='viewport' content='width=device-width, initial-scale=1'>
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 </head><body>
-  <h2 style="text-align: center">Defisiensi Vitamin</h2><br><br>
-<h1><p style="text-align: center"><b>Consultation Result</b></p> </h1>
-<p style="text-align: center">Dari gejala-gejala yang dipilih sebagai berikut :</p>
+  <h2 style="text-align: center">DATA JADWAL PEMESANAN RUANG</h2><br><br>
+<h1><p style="text-align: center"><b>Universitas Islam Malang</b></p> </h1>
+<p style="text-align: center">JL. Mayjend Haryono 193 Malang, 65144</p>
+<br>
 <table> 
  <tr>
-      <th>Gejala</th>
+      <th width="5px">NO</th>
+      <th>Kode Lab</th>
+      <th>Nama Ruang</th>
+      <th>Gedung</th>
+      <th>Tanggal</th>
+      <th>Jam Awal</th>
+      <th>Jam Akhir</th>
+      <th>Fakultas</th>
+      <th>Kursus</th>
+      <th>Nama Instruktur</th>
+      <th>Nama Staff</th>
  </tr> 
- <?php foreach ($gejala as $key) { 
- ?> 
+  <?php 
+    $no = 1;
+    foreach ($pemesanan as $key) 
+    {
+  ?>
   <tr>
-  <td><?php echo $key->nm_gejala;?></td>
+    <td><?php echo $no; ?></td>
+    <td><?php echo $key->kode_lab;?></td>
+    <td><?php echo $key->nama_ruang;?></td>
+    <td><?php echo $key->nama_gedung;?></td>
+    <td><?php echo $key->tanggal;?></td>
+    <td><?php echo $key->jam_awal;?></td>
+    <td><?php echo $key->jam_akhir;?></td>
+    <td><?php echo $key->nama_fakultas;?></td>
+    <td><?php echo $key->nama_kursus;?></td>
+    <td><?php echo $key->nama_instruktur;?></td>
+    <td><?php echo $key->nama;?></td>
   </tr> 
  <?php
-  }?> 
-</table><br><br>
-<p style="text-align: center">Menghasilkan analisa seperti dibawah ini yang merupakan dugaan penyakit dari hasil konsultasi dengan sistem. Segera periksakan ke ahlinya agar penyakit tidak semakin parah. Semoga lekas membaik ^^</p>
-<table> 
- <tr>
-      <th>Tanggal Pemeriksaan</th>
-      <th>Penyakit</th>
-      <th>Detail Penyakit</th>
-      <th>Solusi Penyakit</th>
-      <th>Persentase (%)</th>
- </tr> 
- <?php $id=1; foreach ($pemeriksaan as $key) { 
- ?> 
-  <tr>
-  <td><?php echo $key->tgl_pemeriksaan;?></td>
-  <td><?php echo $key->nm_penyakit;?></td>
-  <td><?php echo $key->detail;?></td>
-  <td><?php echo $key->solusi;?></td>
-  <td><?php echo $key->hasil;?></td>
-  </tr> 
- <?php
- $id++; 
-  }?> 
+  $no++;
+  }
+?>
 </table>
  
 </body></html>
