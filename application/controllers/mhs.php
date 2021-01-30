@@ -127,7 +127,15 @@ class mhs extends CI_Controller {
 
 	public function ikuti($id)
 	{
-		$data['id_mahasiswa'] = $this->session->userdata['id_mahasiswa'];;
+
+		$total_kapasitas = $this->M_Pemesanan->getTotalKapasitasRuang($id);
+		// echo($total_kapasitas[0]['total_kapasitas']);
+		$query = $this->db->query("Select * from pemesananmhs where id_pemesanan='$id'");
+		if(count($query->result()) >= $total_kapasitas){
+			$this->session->set_flashdata('error','Jadwal yang Akan Diikuti Sudah Penuh');
+	    	redirect('mhs/jadwalRuang'); //mengalihkan halaman
+		}
+		$data['id_mahasiswa'] = $this->session->userdata['id_mahasiswa'];
 
 		$data['id_pemesanan'] = $id;
 	    $this->M_Mahasiswa->addPemesananMhs($data); //memasukan data ke database
