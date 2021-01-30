@@ -79,6 +79,12 @@ class Mahasiswa extends CI_Controller {
     }
 
 	function hapusMahasiswa($id){
+		$query = $this->db->query("Select * from pemesananmhs where id_mahasiswa = $id");
+		if($query->result_array() != null){
+			$this->session->set_flashdata('error','Gagal Menghapus Mahasiswa, Data Mahasiswa Masih Digunakan Pada Tabel Pemesanan Mahasiswa');
+			redirect('Mahasiswa');
+		}
+
 		$where = array('id_Mahasiswa' => $id);
 		$this->M_Mahasiswa->hapus($where,'Mahasiswa');
 		$this->session->set_flashdata('success',"Data Mahasiswa Berhasil Dihapus");

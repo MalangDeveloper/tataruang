@@ -131,6 +131,12 @@ class Admin extends CI_Controller {
 	}
 
 	function hapusPemesanan($id){
+		$query = $this->db->query("Select * from pemesananmhs where id_pemesanan = $id");
+		if($query->result_array() != null){
+			$this->session->set_flashdata('error','Gagal Menghapus Jadwal, Data Jadwal Masih Digunakan Pada Tabel Pemesanan Mahasiswa');
+			redirect('Pemesanan');
+		}
+
 		$where = array('id_pemesanan' => $id);
 		$this->M_Pemesanan->hapus($where,'pemesanan');
 		$this->session->set_flashdata('success',"Data Pemesanan Berhasil Dihapus");
