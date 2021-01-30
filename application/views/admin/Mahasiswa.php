@@ -53,7 +53,8 @@
             ?>
             <tr>
               <td><?php echo $i; ?></td>
-              <td><?php echo $key->nama_mahasiswa;?></td>              
+              <td><?php echo $key->nama_mahasiswa;?><br>
+                <a href="<?= base_url() ?>Mahasiswa/detailMahasiswa/<?= $key->id_mahasiswa?>" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> Detail</a></button></td>                  
               <td><?php echo $key->nim;?></td>
               <td><?php echo $key->tgl_lahir;?></td>
               <td><?php echo $key->password;?></td>

@@ -50,7 +50,7 @@
           
           <br>
           <center><button type="submit" class="btn btn-success"><span class="oi oi-person"></span>SIMPAN</button>
-            <a href="<?php echo base_url()?>Users"><button type="button" class="btn btn-danger">KEMBALI</button></a>
+            <a href="<?php echo base_url()?>Mahasiswa"><button type="button" class="btn btn-danger">KEMBALI</button></a>
           <a 
                             href="javascript:;"
                              data-id="<?php echo $key->id_mahasiswa ?>"

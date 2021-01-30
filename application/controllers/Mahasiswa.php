@@ -24,6 +24,19 @@ class Mahasiswa extends CI_Controller {
 		$this->load->view('Admin/menu',$data);
 	}
 
+	public function detailMahasiswa($id)
+	{
+		$nama_mahasiswa =$this->db->query("select * from mahasiswa where id_mahasiswa = $id")->row();
+		$data['nama_mahasiswa'] = $nama_mahasiswa;
+		$data['pemesanan'] = $this->M_Pemesanan->getDataPemesananDetailMhs($id);
+		$data['fakultas']=$this->M_Pemesanan->ambilFakultas();
+		$data['kursus']=$this->M_Pemesanan->ambilKursus();
+		$data['instruktur']=$this->M_Pemesanan->ambilInstruktur();
+		$data['ruang']=$this->M_Pemesanan->ambilRuang();
+		$data['page']='detailMahasiswa.php';
+		$this->load->view('Admin/menu',$data);
+	}	
+
 	// proses menyimpan Mahasiswa setelah menambah data baru
 	function simpanMahasiswa(){
 		$this->M_Mahasiswa->inputMahasiswa();
