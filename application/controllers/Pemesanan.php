@@ -61,25 +61,16 @@ class Pemesanan extends CI_Controller {
     {
 				$row = $query->result_array();
 				$count = $query->num_rows();
-				// print_r($row);
+
 				print_r("<br>");
 				for ($i=0; $i < $count ; $i++) { 
 					$jam_mulai_cek = strtotime($row[$i]['jam_awal']); 
-					// print($jam_mulai_cek);
-					// print_r("&nbsp;");
 					$jam_akhir_cek= strtotime($row[$i]['jam_akhir']);
-					// print($jam_akhir_cek);
-					// print_r("<br>");
-
-					// if ($jam_mulai_cek <= $jam_awal && $jam_awal >= $jam_akhir_cek && $jam_mulai_cek <= $jam_akhir && $jam_akhir >= $jam_akhir_cek){
-					// 	$jumlah++;
-					// 	echo "dapat Ditambahkan";
-					// }
 
 					if (($jam_mulai_cek <= $jam1 && $jam1 >= $jam_akhir_cek && $jam_mulai_cek <= $jam2 && $jam2 >= $jam_akhir_cek)
 							||	($jam_mulai_cek >= $jam1 && $jam1 <= $jam_akhir_cek && $jam_mulai_cek >= $jam2 && $jam2 <= $jam_akhir_cek))
 					{
-						// echo "dapat Ditambahkan";	
+						// echo ="dapat Ditambahkan";	
 					}
 					else {
 						$jumlah++;
@@ -105,14 +96,7 @@ class Pemesanan extends CI_Controller {
 			return;
 		}
 
-		// if($jumlah == 0){
-		// 	print(" gagal");
-		// 	return;
-		// }
-
-    // $this->M_Pemesanan->simpanPemesanan();
-		$this->session->set_flashdata('success','Ruang Berhasil Ditambah');
-		// redirect('Pemesanan','refresh');
+		$this->session->set_flashdata('success','Ruang Berhasil Ditambah');		
 	}
 
 	public function tambahPemesanan()
@@ -124,6 +108,22 @@ class Pemesanan extends CI_Controller {
 		$data['ruang']=$this->M_Pemesanan->ambilRuang();
 		$data['page']='addPemesanan.php';
 		$this->load->view('Admin/menu', $data);
+	}
+
+	public function detailPemesanan($id)
+	{
+		
+		$data['detailPemesanan']=$this->M_Pemesanan->getDataPemesananDetailPemesanan($id);		
+		$data['page']='detailPemesanan.php';
+		$this->load->view('admin/menu',$data);
+	}
+
+	public function detailPemesananStaff($id)
+	{
+		
+		$data['detailPemesanan']=$this->M_Pemesanan->getDataPemesananDetailPemesanan($id);		
+		$data['page']='detailPemesanan.php';
+		$this->load->view('staff/menu',$data);
 	}
 
 }

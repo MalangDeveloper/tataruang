@@ -182,16 +182,11 @@ class Staff extends CI_Controller {
 		if ( $query->num_rows() > 0 )
     {
 				$row = $query->result_array();
-				$count = $query->num_rows();
-				// print_r($row);
+				$count = $query->num_rows();				
 				print_r("<br>");
 				for ($i=0; $i < $count ; $i++) { 
-					$jam_mulai_cek = strtotime($row[$i]['jam_awal']); 
-					// print($jam_mulai_cek);
-					// print_r("&nbsp;");
-					$jam_akhir_cek= strtotime($row[$i]['jam_akhir']);
-					// print($jam_akhir_cek);
-					// print_r("<br>");
+					$jam_mulai_cek = strtotime($row[$i]['jam_awal']); 					
+					$jam_akhir_cek= strtotime($row[$i]['jam_akhir']);					
 
 					if (($jam_mulai_cek <= $jam1 && $jam1 >= $jam_akhir_cek && $jam_mulai_cek <= $jam2 && $jam2 >= $jam_akhir_cek)
 							||	($jam_mulai_cek >= $jam1 && $jam1 <= $jam_akhir_cek && $jam_mulai_cek >= $jam2 && $jam2 <= $jam_akhir_cek))
@@ -199,8 +194,7 @@ class Staff extends CI_Controller {
 						// echo "dapat Ditambahkan";	
 					}
 					else {
-						$jumlah++;
-						// echo "gagal Ditambahkan ST";
+						$jumlah++;						
 						$this->session->set_flashdata('error','Pemesanan Gagal Ditambah <br> Silakan Ganti Jam atau Tempat Penggunaan Ruang');
 						redirect('Staff/tambahPemesanan','refresh');
 						return;
@@ -208,15 +202,13 @@ class Staff extends CI_Controller {
 					
 				}
 				if($jumlah == 0){
-					$this->M_Pemesanan->simpanPemesanan();
-					// print(" DAPAT DITAMBAH ST");
+					$this->M_Pemesanan->simpanPemesanan();					
 					$this->session->set_flashdata('success','Pemesanan Berhasil Ditambah');
 					redirect('Staff/DataPemesanan','refresh');
 				}
 		}
 		else{
-			$this->M_Pemesanan->simpanPemesanan();
-			// print("bisa ditambah ST");
+			$this->M_Pemesanan->simpanPemesanan();			
 			$this->session->set_flashdata('success','Pemesanan Berhasil Ditambah');
 			redirect('Staff/DataPemesanan','refresh');
 			return;

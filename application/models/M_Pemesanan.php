@@ -59,6 +59,13 @@ class M_Pemesanan extends CI_Model {
 		return $query->result();
 	}
 
+	function getDataPemesananDetailPemesanan($id)
+	{
+		$id_pemesanan=$id;
+		$query = $this->db->query("SELECT pem_mhs.*, mahasiswa.*, fakultas.nama_fakultas from pemesananmhs as pem_mhs JOIN mahasiswa as mahasiswa ON pem_mhs.id_mahasiswa = mahasiswa.id_mahasiswa JOIN fakultas as fakultas ON mahasiswa.id_fakultas = fakultas.id_fakultas WHERE id_pemesanan = $id_pemesanan");
+		return $query->result();
+	}
+
 	public function ambilFakultas()
 	{
 		$query = $this->db->query("SELECT * FROM fakultas");

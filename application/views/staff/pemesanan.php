@@ -59,7 +59,8 @@
             <tr>
               <td><?php echo $no; ?></td>
               <td><?php echo $key->kode_lab;?></td>
-              <td><?php echo $key->nama_ruang;?></td>
+              <td><?php echo $key->nama_ruang;?><br>
+              <a href="<?= base_url() ?>Pemesanan/detailPemesananStaff/<?= $key->id_pemesanan?>" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> Detail</a></button></td>
               <td><?php echo $key->nama_gedung;?></td>
               <td><?php echo $key->tanggal;?></td>
               <td><?php echo $key->jam_awal;?></td>
