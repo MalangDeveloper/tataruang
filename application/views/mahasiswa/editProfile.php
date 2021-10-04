@@ -4,6 +4,7 @@
       <div class="x_panel">
         <div class="x_title">
           <h3>DATA MAHASISWA</h3>
+					<h5>UIVERSITAS NEGERI MALANG</h5>
           <div class="clearfix"></div>
         </div><br>
 
@@ -21,6 +22,14 @@
               <span aria-hidden="true">&times;</span>
             </button>
             <?php echo $this->session->flashdata('hapus'); ?> 
+          </div>
+				  <?php  } elseif($this->session->flashdata('gagal')) {?>
+          <!-- validation message to display after form is submitted -->
+          <div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <?php echo $this->session->flashdata('gagal'); ?> 
           </div>
         <?php } elseif($this->session->flashdata('error')) {?>
           <!-- validation message to display after form is submitted -->
@@ -99,7 +108,7 @@
           <div class="modal-content">
               <div class="modal-header">
                   <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-                  <h4 class="modal-title">Ubah Password</h4>
+                  <h4 class="modal-title">Ganti Password Mahasiswa</h4>
               </div>
               <form class="form-horizontal" action="<?php echo base_url('mhs/ubahpass')?>" method="post" enctype="multipart/form-data" role="form">
                 <div class="modal-body">
@@ -107,7 +116,7 @@
                             <label class="col-lg-2 col-sm-2 control-label">Password</label>
                             <div class="col-lg-10">
                               <input type="hidden" id="id_mahasiswa" name="id_mahasiswa">
-                                <input type="password" class="form-control" id="password" name="password" placeholder="Password Baru">
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Masukkan Password Baru">
                             </div>
                         </div>
                     <div class="modal-footer">
